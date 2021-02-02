@@ -1,4 +1,4 @@
-package com.example.pharmacy_bioledge
+package com.biolege.pharmacyapp
 
 import io.flutter.embedding.android.FlutterActivity
 

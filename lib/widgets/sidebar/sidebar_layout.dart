@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../app/locator.dart';
+import '../../app/router.dart';
 import 'sidebar.dart';
 
 class SideBarLayout extends StatelessWidget {

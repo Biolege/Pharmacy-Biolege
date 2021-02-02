@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../app/locator.dart';
+import '../app/router.dart';
 
 class MyAccountsPageScreenView extends StatelessWidget with NavigationStates {
   @override

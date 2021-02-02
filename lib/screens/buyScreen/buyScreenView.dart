@@ -3,7 +3,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'cartScreenView.dart';
 import 'myOrdersScreenView.dart';
 import 'newArrivalScrenView.dart';
-import '../../app/locator.dart';
+import '../../app/router.dart';
 import 'shopScreen/shopScreenView.dart';
 
 class BuyScreenView extends StatefulWidget with NavigationStates {

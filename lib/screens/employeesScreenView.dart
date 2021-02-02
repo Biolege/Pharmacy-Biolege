@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../app/locator.dart';
+import '../app/router.dart';
 
 class EmployeesScreenView extends StatelessWidget with NavigationStates {
   @override

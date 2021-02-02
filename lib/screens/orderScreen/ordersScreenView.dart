@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../orderScreen/reportScreen/report.dart';
-import '../../app/locator.dart';
+import '../../app/router.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'createBillScreen/createBillScreenView.dart';
 import 'onlineOrderScreen/onlineOrder.dart';
