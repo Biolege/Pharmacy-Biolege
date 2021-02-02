@@ -1,13 +1,13 @@
 import 'package:bloc/bloc.dart';
-import '../screens/accountsScreenView.dart';
-import '../screens/analyticsScreenView.dart';
-import '../screens/buyScreen/buyScreenView.dart';
-import '../screens/employeesScreenView.dart';
-import '../screens/homePageScreenView.dart';
-import '../screens/myProfileScreenView.dart';
-import '../screens/notificationScreenView.dart';
-import '../screens/orderScreen/ordersScreenView.dart';
-import '../screens/stockScreen/stockLayoutScreenView.dart';
+import '../screens/accountsScreenView/accountsScreenView.dart';
+import '../screens/analyticsScreenView/analyticsScreenView.dart';
+import '../screens/buyScreen/buyScreenView/buyScreenView.dart';
+import '../screens/employeesScreenView/employeesScreenView.dart';
+import '../screens/homePageScreenView/homePageScreenView.dart';
+import '../screens/myProfileScreenView/myProfileScreenView.dart';
+import '../screens/notificationScreenView/notificationScreenView.dart';
+import '../screens/orderScreen/ordersScreenView/ordersScreenView.dart';
+import '../screens/stockScreen/stockLayoutScreenView/stockLayoutScreenView.dart';
 
 enum NavigationEvents {
   HomePageClickedEvent,

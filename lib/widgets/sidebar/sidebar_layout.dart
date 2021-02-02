@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../screens/homePageScreenView.dart';
+import '../../screens/homePageScreenView/homePageScreenView.dart';
 import '../../app/router.dart';
 import 'sidebar.dart';
 
