@@ -24,7 +24,7 @@ enum NavigationEvents {
 abstract class NavigationStates {}
 
 class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
-  NavigationBloc() : super(null);
+  NavigationBloc(NavigationStates x) : super(x);
 
   @override
   Stream<NavigationStates> mapEventToState(NavigationEvents event) async* {
