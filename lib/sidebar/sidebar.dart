@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
-
-import '../bloc.navigation_bloc/navigation_bloc.dart';
+import 'package:pharmacy_bioledge/app/locator.dart';
 import '../sidebar/menu_item.dart';
 
 class SideBar extends StatefulWidget {
