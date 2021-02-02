@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_bioledge/app/locator.dart';
+import '../app/locator.dart';
 
 class NotificationScreenView extends StatelessWidget with NavigationStates {
   @override

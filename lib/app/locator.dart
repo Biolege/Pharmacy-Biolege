@@ -1,13 +1,13 @@
 import 'package:bloc/bloc.dart';
-import 'package:pharmacy_bioledge/screens/accountsScreenView.dart';
-import 'package:pharmacy_bioledge/screens/analyticsScreenView.dart';
-import 'package:pharmacy_bioledge/screens/buyScreen/buyScreenView.dart';
-import 'package:pharmacy_bioledge/screens/employeesScreenView.dart';
-import 'package:pharmacy_bioledge/screens/homePageScreenView.dart';
-import 'package:pharmacy_bioledge/screens/myProfileScreenView.dart';
-import 'package:pharmacy_bioledge/screens/notificationScreenView.dart';
-import 'package:pharmacy_bioledge/screens/orderScreen/ordersScreenView.dart';
-import 'package:pharmacy_bioledge/screens/stockScreen/stockLayoutScreenView.dart';
+import '../screens/accountsScreenView.dart';
+import '../screens/analyticsScreenView.dart';
+import '../screens/buyScreen/buyScreenView.dart';
+import '../screens/employeesScreenView.dart';
+import '../screens/homePageScreenView.dart';
+import '../screens/myProfileScreenView.dart';
+import '../screens/notificationScreenView.dart';
+import '../screens/orderScreen/ordersScreenView.dart';
+import '../screens/stockScreen/stockLayoutScreenView.dart';
 
 enum NavigationEvents {
   HomePageClickedEvent,

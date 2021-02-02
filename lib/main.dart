@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacy_bioledge/sidebar/sidebar_layout.dart';
+import 'widgets/sidebar/sidebar_layout.dart';
 
 void main() {
   runApp(MyApp());

@@ -45,11 +45,11 @@ class _RenderInnerShadow extends RenderProxyBox {
 
     final Rect rectOuter = offset & size;
     final Rect rectInner = Rect.fromLTWH(
-    offset.dx,
-    offset.dy,
-    size.width,
-    size.height,
-);
+      offset.dx,
+      offset.dy,
+      size.width,
+      size.height,
+    );
     final Canvas canvas = context.canvas..saveLayer(rectOuter, Paint());
     context.paintChild(child, offset);
     final Paint shadowPaint = Paint()
