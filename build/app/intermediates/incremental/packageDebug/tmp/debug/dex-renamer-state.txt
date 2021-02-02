@@ -1,4 +1,0 @@
-#Tue Feb 02 18:18:06 IST 2021
-base.0=D\:\\Project Directory\\[App]Biolege\\pharmacyapp\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
