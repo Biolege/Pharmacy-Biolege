@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
-import '../../app/router.dart';
+import 'package:stacked/stacked.dart';
+import 'myAccountsPageScreenViewModel.dart';
 
-class MyAccountsPageScreenView extends StatelessWidget with NavigationStates {
+class MyAccountsPageScreenView extends StatelessWidget {
+  static const String routeName = "/MyAccountsPageScreenView";
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        "My Accounts",
-        style: TextStyle(fontWeight: FontWeight.w900, fontSize: 28),
-      ),
+    return ViewModelBuilder<MyAccountsPageScreenViewModel>.reactive(
+      viewModelBuilder: () => MyAccountsPageScreenViewModel(),
+      builder: (context, model, child) {
+        return Center(
+          child: Text(
+            "My Accounts",
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 28),
+          ),
+        );
+      },
     );
   }
 }

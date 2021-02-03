@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'widgets/sidebar/sidebar_layout.dart';
+import 'widgets/sidebar/sideBarLayoutScreenView.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           scaffoldBackgroundColor: Colors.white, primaryColor: Colors.orange),
-      home: SideBarLayout(),
+      home: SideBarLayoutView(),
     );
   }
 }
