@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:stacked/stacked.dart';
-import '../medicineDetailsScreenView/medicineDetailsScreenView.dart';
 import 'myimportsScreenViewModel.dart';
 
 class MyImportsScreenView extends StatelessWidget {
   static const String routeName = "/MyImportsScreenView";
-  Widget _singlemeds(context) {
+  Widget _singlemeds(BuildContext context, MyimportsScreenViewModel model) {
     return GestureDetector(
-        onTap: () {
-          pushNewScreen(context, screen: MedicineDetails());
-        },
+        onTap: () => model.pushMedicineDetails(),
         child: Card(
           child: Padding(
             padding: const EdgeInsets.all(9.0),
@@ -129,10 +125,10 @@ class MyImportsScreenView extends StatelessWidget {
                   SizedBox(
                     height: 15,
                   ),
-                  _singlemeds(context),
-                  _singlemeds(context),
-                  _singlemeds(context),
-                  _singlemeds(context),
+                  _singlemeds(context, model),
+                  _singlemeds(context, model),
+                  _singlemeds(context, model),
+                  _singlemeds(context, model),
                 ],
               ),
             ),

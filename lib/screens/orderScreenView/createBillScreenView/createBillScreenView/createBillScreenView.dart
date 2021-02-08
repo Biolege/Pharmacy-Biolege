@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:stacked/stacked.dart';
-import '../onShopBillScreenView/onShopBillScreenView.dart';
 import 'createBillScreenViewModel.dart';
 
 class CreateBillScreenView extends StatelessWidget {
@@ -61,12 +59,7 @@ class CreateBillScreenView extends StatelessWidget {
                             color: Colors.green,
                             fontWeight: FontWeight.w300),
                       ),
-                      onTap: () {
-                        pushNewScreen(
-                          context,
-                          screen: OnShopBillScreenView(),
-                        );
-                      },
+                      onTap: () => model.pushOnShopBillScreenView(),
                     ),
                   ],
                 ),
@@ -83,12 +76,7 @@ class CreateBillScreenView extends StatelessWidget {
                       width: 10,
                     ),
                     GestureDetector(
-                      onTap: () {
-                        pushNewScreen(
-                          context,
-                          screen: OnShopBillScreenView(),
-                        );
-                      },
+                      onTap: () => model.pushOnShopBillScreenView(),
                       child: Text(
                         'Create online order',
                         style: TextStyle(

@@ -91,83 +91,47 @@ class _SideBarViewState extends State<SideBarView>
                           MenuItem(
                             icon: Icons.home,
                             title: "Home",
-                            onTap: () {
-                              // onIconPressed();
-                              // BlocProvider.of<NavigationBloc>(context)
-                              //     .add(NavigationEvents.HomePageClickedEvent);
-                            },
+                            onTap: () => model.pushHomePageScreenView(),
                           ),
                           MenuItem(
                             icon: Icons.account_circle,
                             title: "Order",
-                            onTap: () {
-                              // onIconPressed();
-                              // BlocProvider.of<NavigationBloc>(context)
-                              //     .add(NavigationEvents.OrdersClickedEvent);
-                            },
+                            onTap: () => model.pushOrdersScreenView(),
                           ),
                           MenuItem(
                             icon: Icons.settings_input_component,
                             title: "Stock",
-                            onTap: () {
-                              // onIconPressed();
-                              // BlocProvider.of<NavigationBloc>(context)
-                              //     .add(NavigationEvents.StockClickedEvent);
-                            },
+                            onTap: () => model.pushStockLayoutScreenView(),
                           ),
                           MenuItem(
                             icon: Icons.shopping_cart,
                             title: "Buy",
-                            onTap: () {
-                              // onIconPressed();
-                              // BlocProvider.of<NavigationBloc>(context)
-                              //     .add(NavigationEvents.BuyClickedEvent);
-                            },
+                            onTap: () => model.pushBuyScreenView(),
                           ),
                           MenuItem(
                             icon: Icons.notifications,
                             title: "Notification",
-                            onTap: () {
-                              // onIconPressed();
-                              // BlocProvider.of<NavigationBloc>(context)
-                              //     .add(NavigationEvents.NotificationClickedEvent);
-                            },
+                            onTap: () => model.pushNotificationScreenView(),
                           ),
                           MenuItem(
                             icon: Icons.details,
                             title: "Analytics",
-                            onTap: () {
-                              // onIconPressed();
-                              // BlocProvider.of<NavigationBloc>(context)
-                              //     .add(NavigationEvents.AnalysisClickedEvent);
-                            },
+                            onTap: () => model.pushAnalyticsScreenView(),
                           ),
                           MenuItem(
                             icon: Icons.people,
                             title: "Employess",
-                            onTap: () {
-                              // onIconPressed();
-                              // BlocProvider.of<NavigationBloc>(context)
-                              //     .add(NavigationEvents.EmployeeClickedEvent);
-                            },
+                            onTap: () => model.pushEmployeesScreenView(),
                           ),
                           MenuItem(
                             icon: Icons.monetization_on,
                             title: "Accounts",
-                            onTap: () {
-                              // onIconPressed();
-                              // BlocProvider.of<NavigationBloc>(context)
-                              //     .add(NavigationEvents.AccountsClickedEvent);
-                            },
+                            onTap: () => model.pushAccountsScreenView(),
                           ),
                           MenuItem(
                             icon: Icons.person,
                             title: "My Profile",
-                            onTap: () {
-                              // onIconPressed();
-                              // BlocProvider.of<NavigationBloc>(context)
-                              //     .add(NavigationEvents.MyProfileClickedEvent);
-                            },
+                            onTap: () => model.pushMyProfileScreenView(),
                           ),
                         ],
                       ),

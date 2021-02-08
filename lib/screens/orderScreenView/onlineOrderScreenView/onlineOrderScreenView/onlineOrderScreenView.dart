@@ -1,8 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:stacked/stacked.dart';
-import '../onlineOrderDetailsScreenView/onlineOrderDetailsScreenView.dart';
 import 'onlineOrderScreenViewModel.dart';
 
 class OnlineOrderScreenView extends StatelessWidget {
@@ -35,12 +33,7 @@ class OnlineOrderScreenView extends StatelessWidget {
                   ),
                   Card(
                     child: GestureDetector(
-                      onTap: () {
-                        pushNewScreen(
-                          context,
-                          screen: OnlineOrderDetailsScreenView(),
-                        );
-                      },
+                      onTap: () => model.pushOnlineOrderDetailsScreenView(),
                       child: Container(
                         margin: EdgeInsets.all(20),
                         child: Column(

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../constants/innershadow.dart';
-import '../orderConfirmationView/orderConfirmationView.dart';
 import 'paymenModeScreenViewModel.dart';
 
 class PaymentModeScreenView extends StatelessWidget {
@@ -105,12 +103,7 @@ class PaymentModeScreenView extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                           color: Colors.grey[200]),
                       child: GestureDetector(
-                        onTap: () {
-                          pushNewScreen(
-                            context,
-                            screen: OrderConfirmationView(),
-                          );
-                        },
+                        onTap: () => model.pushOrderConfirmationView(),
                         child: Padding(
                           padding: const EdgeInsets.all(9.0),
                           child: Row(

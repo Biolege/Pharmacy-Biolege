@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../constants/innershadow.dart';
-import '../orderPageScreenView/orderPageScreenView.dart';
 import 'customerDetailsScreenViewModel.dart';
 
 class CustomerDetailsScreenView extends StatelessWidget {
@@ -230,12 +228,7 @@ class CustomerDetailsScreenView extends StatelessWidget {
                                   BorderRadius.all(Radius.circular(20)),
                               color: Colors.grey[200]),
                           child: GestureDetector(
-                            onTap: () {
-                              pushNewScreen(
-                                context,
-                                screen: OrderPageScreenView(),
-                              );
-                            },
+                            onTap: () => model.pushOrderPageScreenView(),
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Row(

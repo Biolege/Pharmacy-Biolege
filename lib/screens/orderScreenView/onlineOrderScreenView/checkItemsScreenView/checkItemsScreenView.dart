@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../constants/innershadow.dart';
-import '../orderConfirmationDetailScreenView/orderConfirmationDetailScreenView.dart';
 import 'checkItemsScreenViewModel.dart';
 
 class CheckItemsScreenView extends StatelessWidget {
@@ -451,10 +449,8 @@ class CheckItemsScreenView extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(10.0),
                             child: GestureDetector(
-                              onTap: () {
-                                pushNewScreen(context,
-                                    screen: ConfirmationDetailsScreenView());
-                              },
+                              onTap: () =>
+                                  model.pushConfirmationDetailsScreenView(),
                               child: Row(
                                 children: [
                                   Text('Ready to deliver',

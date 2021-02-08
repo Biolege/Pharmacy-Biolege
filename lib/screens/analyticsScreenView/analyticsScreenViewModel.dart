@@ -4,6 +4,8 @@ class AnalyticsScreenViewModel extends FutureViewModel {
   @override
   Future futureToRun() {
     // TODO: implement futureToRun
-    throw UnimplementedError();
+    try {} catch (e) {
+      throw UnimplementedError();
+    }
   }
 }

@@ -37,9 +37,7 @@ class ImportMedicineScreenView extends StatelessWidget {
                     height: 35,
                   ),
                   GestureDetector(
-                    onTap: () {
-                      pushNewScreen(context, screen: ImportMedicine());
-                    },
+                    onTap: () => model.pushImportMedicine(),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 25),
                       child: Row(
@@ -63,9 +61,7 @@ class ImportMedicineScreenView extends StatelessWidget {
                     height: 30,
                   ),
                   GestureDetector(
-                    onTap: () {
-                      pushNewScreen(context, screen: MyImportsScreenView());
-                    },
+                    onTap: () => model.pushMyImportsScreenView(),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 25),
                       child: Row(

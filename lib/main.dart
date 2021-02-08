@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'widgets/sidebar/sideBarLayoutScreenView.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'app/locator.dart';
+import 'widgets/sidebar/sideBarLayoutScreenView/sideBarLayoutScreenView.dart';
+import 'app/router.gr.dart' as router;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setupLocator();
   runApp(MyApp());
 }
 
@@ -13,6 +17,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Bioledge Pharmacy',
       debugShowCheckedModeBanner: false,
+      navigatorKey: StackedService.navigatorKey,
+      onGenerateRoute: router.Router().onGenerateRoute,
       theme: ThemeData(
           scaffoldBackgroundColor: Colors.white, primaryColor: Colors.orange),
       home: SideBarLayoutView(),

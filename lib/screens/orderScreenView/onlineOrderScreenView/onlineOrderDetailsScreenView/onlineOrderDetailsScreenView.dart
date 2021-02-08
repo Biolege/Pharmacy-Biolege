@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:stacked/stacked.dart';
 import '../../../../constants/innershadow.dart';
-import '../checkItemsScreenView/checkItemsScreenView.dart';
 import '../customerDetailsScreenView/customerDetailsScreenView.dart';
 import 'onlineOrderDetailsScreenViewModel.dart';
 
@@ -471,10 +470,7 @@ class OnlineOrderDetailsScreenView extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
-                                onTap: () {
-                                  pushNewScreen(context,
-                                      screen: CheckItemsScreenView());
-                                },
+                                onTap: () => model.pushCheckItemsScreenView(),
                                 child: Row(
                                   children: [
                                     Text('Start Billing',

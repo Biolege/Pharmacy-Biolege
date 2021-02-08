@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ImportMedicine extends StatelessWidget {
+  static const String routeName = "/ImportMedicine";
   Widget _singlemeds(context) {
     return GestureDetector(
         onTap: () {

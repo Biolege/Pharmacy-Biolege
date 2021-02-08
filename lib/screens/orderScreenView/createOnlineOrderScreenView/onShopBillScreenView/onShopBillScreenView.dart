@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:stacked/stacked.dart';
-import '../customerDetailsScreenView/customerDetailsScreenView.dart';
-import '../biolegeCardScreenView/biolegeCardScreenView.dart';
 import '../../../../constants/innershadow.dart';
 import 'onShopBillScreenViewModel.dart';
 
@@ -68,12 +65,7 @@ class OnShopBillOScreenView extends StatelessWidget {
                               color: Colors.grey,
                             ),
                           ),
-                          onTap: () {
-                            pushNewScreen(
-                              context,
-                              screen: BiolegeCardScreenView(),
-                            );
-                          },
+                          onTap: () => model.pushBiolegeCardScreenView(),
                         ),
                       ],
                     ),
@@ -89,12 +81,7 @@ class OnShopBillOScreenView extends StatelessWidget {
                           color: Colors.grey[200],
                         ),
                         child: GestureDetector(
-                          onTap: () {
-                            pushNewScreen(
-                              context,
-                              screen: CustomerDetailsScreenView(),
-                            );
-                          },
+                          onTap: () => model.pushCustomerDetailsScreenView(),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row(

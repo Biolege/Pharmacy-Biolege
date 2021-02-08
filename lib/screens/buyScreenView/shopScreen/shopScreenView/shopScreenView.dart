@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:stacked/stacked.dart';
-import '../productDescriptionScreenView/productDescriptionScreenView.dart';
 import 'shopScreenViewModel.dart';
 
 class ShopScreenView extends StatelessWidget {
@@ -47,11 +45,9 @@ class ShopScreenView extends StatelessWidget {
     );
   }
 
-  Widget _topsellmed(context) {
+  Widget _topsellmed(BuildContext context, ShopScreenViewModel model) {
     return GestureDetector(
-      onTap: () {
-        pushNewScreen(context, screen: ProductDescriptionScreenView());
-      },
+      onTap: () => model.pushProductDescriptionScreenView(),
       child: Card(
         child: Container(
           height: 300,
@@ -276,8 +272,8 @@ class ShopScreenView extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          _topsellmed(context),
-                          _topsellmed(context),
+                          _topsellmed(context, model),
+                          _topsellmed(context, model),
                         ],
                       )
                     ],

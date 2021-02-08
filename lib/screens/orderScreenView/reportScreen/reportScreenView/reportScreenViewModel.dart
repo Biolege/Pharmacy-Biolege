@@ -4,6 +4,8 @@ class ReportScreenViewModel extends FutureViewModel {
   @override
   Future futureToRun() async {
     // TODO: implement futureToRun
-    throw UnimplementedError();
+    try {} catch (e) {
+      throw UnimplementedError();
+    }
   }
 }
