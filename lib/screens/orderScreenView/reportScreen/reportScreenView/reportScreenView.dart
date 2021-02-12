@@ -19,7 +19,7 @@ class ReportScreenView extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        'Report',
+                        'Order Report',
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.black,

@@ -18,28 +18,29 @@ class CreateBillScreenView extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Orders',
+                    'Create Orders',
                     style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700),
+                      fontSize: 25,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.black,
+                    ),
                   ),
                 ],
               ),
-              SizedBox(
-                height: 18,
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Create billing',
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w600),
-                  ),
-                ],
-              ),
+              // SizedBox(
+              //   height: 18,
+              // ),
+              // Row(
+              //   children: [
+              //     Text(
+              //       'Create billing',
+              //       style: TextStyle(
+              //           fontSize: 18,
+              //           color: Colors.black,
+              //           fontWeight: FontWeight.w600),
+              //     ),
+              //   ],
+              // ),
               SizedBox(
                 height: 35,
               ),

@@ -1,8 +1,8 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:rxdart/rxdart.dart';
+import '../../../theme/reusables.dart';
+import '../../../app/mediaQ.dart';
+import '../../../theme/theme.dart';
 import 'package:stacked/stacked.dart';
-import '../menuItem.dart';
 import 'sidebarScreenViewModel.dart';
 
 class SideBarView extends StatefulWidget {
@@ -11,185 +11,283 @@ class SideBarView extends StatefulWidget {
   _SideBarViewState createState() => _SideBarViewState();
 }
 
-class _SideBarViewState extends State<SideBarView>
-    with SingleTickerProviderStateMixin<SideBarView> {
-  AnimationController _animationController;
-  StreamController<bool> isSidebarOpenedStreamController;
-  Stream<bool> isSidebarOpenedStream;
-  StreamSink<bool> isSidebarOpenedSink;
-  final Duration _animationDuration = const Duration(milliseconds: 300);
-
-  @override
-  void initState() {
-    super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: _animationDuration);
-    isSidebarOpenedStreamController = PublishSubject<bool>();
-    isSidebarOpenedStream = isSidebarOpenedStreamController.stream;
-    isSidebarOpenedSink = isSidebarOpenedStreamController.sink;
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    isSidebarOpenedStreamController.close();
-    isSidebarOpenedSink.close();
-    super.dispose();
-  }
-
-  void onIconPressed() {
-    final animationStatus = _animationController.status;
-    final isAnimationCompleted = animationStatus == AnimationStatus.completed;
-
-    if (isAnimationCompleted) {
-      isSidebarOpenedSink.add(false);
-      _animationController.reverse();
-    } else {
-      isSidebarOpenedSink.add(true);
-      _animationController.forward();
-    }
-  }
-
+class _SideBarViewState extends State<SideBarView> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final screenWidth = MediaQuery.of(context).size.width;
     return ViewModelBuilder<SidebarScreenViewModel>.reactive(
       viewModelBuilder: () => SidebarScreenViewModel(),
       builder: (context, model, child) {
-        return StreamBuilder<bool>(
-          initialData: false,
-          stream: isSidebarOpenedStream,
-          builder: (context, isSideBarOpenedAsync) {
-            return AnimatedPositioned(
-              duration: _animationDuration,
-              curve: Curves.ease,
-              top: 0,
-              bottom: 0,
-              left: isSideBarOpenedAsync.data ? 0 : -screenWidth,
-              right: isSideBarOpenedAsync.data ? 0 : screenWidth - 45,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      color: const Color(0xFF141B41),
-                      child: Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 60,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                'Dona Medicos',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 25),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: 50),
-                          MenuItem(
-                            icon: Icons.home,
-                            title: "Home",
-                            onTap: () => model.pushHomePageScreenView(),
-                          ),
-                          MenuItem(
-                            icon: Icons.account_circle,
-                            title: "Order",
-                            onTap: () => model.pushOrdersScreenView(),
-                          ),
-                          MenuItem(
-                            icon: Icons.settings_input_component,
-                            title: "Stock",
-                            onTap: () => model.pushStockLayoutScreenView(),
-                          ),
-                          MenuItem(
-                            icon: Icons.shopping_cart,
-                            title: "Buy",
-                            onTap: () => model.pushBuyScreenView(),
-                          ),
-                          MenuItem(
-                            icon: Icons.notifications,
-                            title: "Notification",
-                            onTap: () => model.pushNotificationScreenView(),
-                          ),
-                          MenuItem(
-                            icon: Icons.details,
-                            title: "Analytics",
-                            onTap: () => model.pushAnalyticsScreenView(),
-                          ),
-                          MenuItem(
-                            icon: Icons.people,
-                            title: "Employess",
-                            onTap: () => model.pushEmployeesScreenView(),
-                          ),
-                          MenuItem(
-                            icon: Icons.monetization_on,
-                            title: "Accounts",
-                            onTap: () => model.pushAccountsScreenView(),
-                          ),
-                          MenuItem(
-                            icon: Icons.person,
-                            title: "My Profile",
-                            onTap: () => model.pushMyProfileScreenView(),
-                          ),
-                        ],
-                      ),
+        return Scaffold(
+          appBar: buildAppBarWithLogoAndText(
+              context,
+              Text(
+                "Welcome",
+                style: TextStyle(color: white),
+              )),
+          body: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            color: sideBarBlueColor,
+            child: ListView(
+              children: <Widget>[
+                SizedBox(
+                  height: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '',
+                      style: TextStyle(color: Colors.white, fontSize: 20),
                     ),
-                  ),
-                  Align(
-                    child: GestureDetector(
-                      onTap: () {
-                        onIconPressed();
-                      },
-                      child: ClipPath(
-                        clipper: CustomMenuClipper(),
-                        child: Container(
-                          width: 35,
-                          height: 110,
-                          color: Color(0xFF141B41),
-                          alignment: Alignment.centerLeft,
-                          child: AnimatedIcon(
-                            progress: _animationController.view,
-                            icon: AnimatedIcons.arrow_menu,
-                            color: Colors.white,
-                            size: 25,
-                          ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(20),
+                    ),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      color: sideBarTileColor,
+                      child: Padding(
+                        padding:
+                            EdgeInsets.all(getProportionateScreenWidth(20)),
+                        child: Row(
+                          children: [
+                            CircleAvatar(),
+                            SizedBox(
+                              width: getProportionateScreenWidth(10),
+                            ),
+                            Text(
+                              "Dona Medicos",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            )
+                          ],
                         ),
                       ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(40),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Today',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
                     ),
-                  ),
-                ],
-              ),
-            );
-          },
+                    SizedBox(
+                      height: getProportionateScreenHeight(20),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        MenuTypeTile(
+                            title: "Total Customer",
+                            function: () => {},
+                            subtitle: "13",
+                            icon: Icons.tag_faces_outlined,
+                            sideBarTileColor: sideBarTileColor,
+                            screenWidth: screenWidth),
+                        MenuTypeTile(
+                            title: "Total Revenue",
+                            function: () => {},
+                            subtitle: "13",
+                            icon: Icons.monetization_on,
+                            sideBarTileColor: sideBarTileColor,
+                            screenWidth: screenWidth)
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(20),
+                ),
+                Divider(),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Menu',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(20),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        MenuTile(
+                            function: () => model.pushOrdersScreenView(),
+                            icon: Icons.badge,
+                            text: "Orders",
+                            screenWidth: screenWidth,
+                            tileColor: sideBarTileColor),
+                        MenuTile(
+                            function: () => {},
+                            icon: Icons.storage_rounded,
+                            text: "Stocks",
+                            screenWidth: screenWidth,
+                            tileColor: sideBarTileColor),
+                        MenuTile(
+                            function: () => {},
+                            icon: Icons.shopping_cart,
+                            text: "Buy Meds",
+                            screenWidth: screenWidth,
+                            tileColor: sideBarTileColor),
+                        MenuTile(
+                            function: () => {},
+                            icon: Icons.storage_rounded,
+                            text: "Stocks",
+                            screenWidth: screenWidth,
+                            tileColor: sideBarTileColor),
+                      ],
+                    ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(10),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        MenuTile(
+                            function: () => {},
+                            icon: Icons.storage_rounded,
+                            text: "Stocks",
+                            screenWidth: screenWidth,
+                            tileColor: sideBarTileColor),
+                        MenuTile(
+                            function: () => {},
+                            icon: Icons.graphic_eq_outlined,
+                            text: "Analytic",
+                            screenWidth: screenWidth,
+                            tileColor: sideBarTileColor),
+                        MenuTile(
+                            function: () => {},
+                            icon: Icons.people,
+                            text: "Members",
+                            screenWidth: screenWidth,
+                            tileColor: sideBarTileColor),
+                        MenuTile(
+                            function: () => {},
+                            icon: Icons.account_circle,
+                            text: "My Profile",
+                            screenWidth: screenWidth,
+                            tileColor: sideBarTileColor),
+                      ],
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
         );
       },
     );
   }
 }
 
-class CustomMenuClipper extends CustomClipper<Path> {
+class MenuTypeTile extends StatelessWidget {
+  const MenuTypeTile(
+      {Key key,
+      @required this.sideBarTileColor,
+      @required this.screenWidth,
+      @required this.title,
+      @required this.subtitle,
+      @required this.icon,
+      @required this.function})
+      : super(key: key);
+
+  final String title, subtitle;
+  final Color sideBarTileColor;
+  final double screenWidth;
+  final IconData icon;
+  final void Function() function;
   @override
-  Path getClip(Size size) {
-    Paint paint = Paint();
-    paint.color = Colors.white;
-
-    final width = size.width;
-    final height = size.height;
-
-    Path path = Path();
-    path.moveTo(0, 0);
-    path.quadraticBezierTo(0, 8, 10, 16);
-    path.quadraticBezierTo(width - 1, height / 2 - 20, width, height / 2);
-    path.quadraticBezierTo(width + 1, height / 2 + 20, 10, height - 16);
-    path.quadraticBezierTo(0, height - 8, 0, height);
-    path.close();
-    return path;
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: function,
+      child: Container(
+        decoration: BoxDecoration(
+            color: sideBarTileColor, borderRadius: BorderRadius.circular(10)),
+        width: screenWidth / 2.5,
+        height: 100,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 35,
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(5),
+                ),
+                Text(
+                  title,
+                  style: TextStyle(color: Colors.white),
+                ),
+                Text(
+                  subtitle,
+                  style: TextStyle(color: Colors.white),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
+}
 
+class MenuTile extends StatelessWidget {
+  const MenuTile(
+      {Key key,
+      @required this.screenWidth,
+      @required this.tileColor,
+      @required this.icon,
+      @required this.text,
+      @required this.function})
+      : super(key: key);
+
+  final double screenWidth;
+  final Color tileColor;
+  final String text;
+  final IconData icon;
+  final void Function() function;
   @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return true;
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: function,
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        width: screenWidth / 5,
+        height: 80,
+        decoration: BoxDecoration(
+            color: tileColor, borderRadius: BorderRadius.circular(10)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Icon(
+              icon,
+              color: Colors.white,
+              size: 20,
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(5),
+            ),
+            Text(
+              text,
+              style: TextStyle(color: Colors.white, fontSize: 12),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

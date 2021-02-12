@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:stacked/stacked.dart';
-
-import 'importMedicineScreenViewComponent.dart';
-import '../myimportsScreenView/myimportsScreenView.dart';
 import 'importMedicineScreenViewModel.dart';
 
 class ImportMedicineScreenView extends StatelessWidget {

@@ -3,6 +3,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'app/locator.dart';
 import 'widgets/sidebar/sideBarLayoutScreenView/sideBarLayoutScreenView.dart';
 import 'app/router.gr.dart' as router;
+import 'widgets/sidebar/sideBarScreenView/sidebarScreenView.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: router.Router().onGenerateRoute,
       theme: ThemeData(
           scaffoldBackgroundColor: Colors.white, primaryColor: Colors.orange),
-      home: SideBarLayoutView(),
+      // home: SideBarLayoutView(),
+      home: SideBarView(),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:stacked/stacked.dart';
 
 class AnalyticsScreenViewModel extends FutureViewModel {
   @override
-  Future futureToRun() {
+  Future futureToRun() async {
     // TODO: implement futureToRun
     try {} catch (e) {
       throw UnimplementedError();
