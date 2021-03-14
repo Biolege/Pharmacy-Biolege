@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
+import 'onShopBillingDataService.dart';
 
 abstract class ThirdPartyServicesModule {
   @lazySingleton
@@ -8,7 +9,7 @@ abstract class ThirdPartyServicesModule {
   // ---------------------------------------------------
   // Data Services
   // ---------------------------------------------------
-
+  OnShopBillingDataService get onShopBillingDataService;
   // ---------------------------------------------------
   // Navigation Services
   NavigationService get navigationService;

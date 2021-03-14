@@ -1,56 +1,65 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:pharmacyapp/theme/theme.dart';
+import '../../../../app/mediaQ.dart';
+import '../../../../theme/reusables.dart';
 import 'package:stacked/stacked.dart';
-import '../../../../constants/innershadow.dart';
 import 'orderPageScreenViewModel.dart';
 
 class OrderPageScreenView extends StatelessWidget {
   static const String routeName = "/OrderPageScreenView";
   Widget _singlemeddetails() {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Medicine name',
-                    style: TextStyle(
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.all(10),
+      color: white,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Medicine name',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    fontSize: 15,
+                  )),
+              Text('Brand name',
+                  style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: 18,
-                    )),
-                Text('Brand name',
-                    style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 15,
-                        color: Colors.grey)),
-              ],
-            ),
-            Row(
-              children: [
-                GestureDetector(
-                  child: Icon(Icons.add_circle),
-                ),
-                Text('2'),
-                GestureDetector(
-                  child: Icon(Icons.add_circle),
-                ),
-              ],
-            ),
-            Text(
-              'Strip',
-              style: TextStyle(color: Colors.grey[400]),
-            ),
-            Text(
-              '₹ 460',
-              style: TextStyle(fontSize: 20, color: Colors.blue),
-            )
-          ],
-        ),
-        SizedBox(
-          height: 20,
-        ),
-      ],
+                      fontSize: 12,
+                      color: Colors.grey)),
+            ],
+          ),
+          Row(
+            children: [
+              GestureDetector(
+                child: Icon(Icons.remove_circle),
+              ),
+              Text('2'),
+              GestureDetector(
+                child: Icon(Icons.add_circle),
+              ),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                'Strip',
+                style: TextStyle(color: Colors.grey[400], fontSize: 12),
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Text(
+                '₹ 460',
+                style: TextStyle(fontSize: 18, color: Colors.blue),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 
@@ -60,30 +69,80 @@ class OrderPageScreenView extends StatelessWidget {
       viewModelBuilder: () => OrderPageScreenViewModel(),
       builder: (context, model, child) {
         return Scaffold(
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: Container(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: buildOutlineButtonCustomWidget(
+                  Container(
+                    width: SizeConfig.screenWidth / 1.5,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Text(
+                          "Total Amount\n₹460",
+                          style: TextStyle(
+                              fontSize: 12,
+                              color: white,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              "Continue",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: white,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Icon(
+                              MaterialIcons.arrow_forward,
+                              color: Colors.white,
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  () => model.pushPaymentModeView(),
+                  40),
+            ),
+          ),
           body: SingleChildScrollView(
             child: SafeArea(
               child: Container(
-                margin: EdgeInsets.only(top: 15, left: 38, right: 20),
+                margin: EdgeInsets.all(20),
                 child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'On shop billing',
+                          'On Shop Billing',
                           style: TextStyle(
-                              fontSize: 21,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w400),
+                            fontSize: 25,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Text(
+                          'Billing',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.black,
+                          ),
                         ),
                       ],
                     ),
                     SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      width: 5,
+                      height: 35,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         IconButton(
                           onPressed: () {},
@@ -94,17 +153,26 @@ class OrderPageScreenView extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 257,
-                          height: 40,
-                          child: TextField(
+                          width: SizeConfig.screenWidth / 1.8,
+                          // height: 80,
+                          child: TextFormField(
+                            controller: model.searchKey,
+                            // onChanged: (x) => model.searchResults(x, context),
                             decoration: InputDecoration(
                                 hoverColor: Colors.grey,
-                                suffixIcon: Icon(Icons.search),
+                                suffixIcon: IconButton(
+                                  onPressed: () => model.searchResults(context),
+                                  icon: Icon(
+                                    Icons.search,
+                                    size: 20,
+                                  ),
+                                ),
                                 border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(29)),
-                                hintText: 'Search for medicines'),
+                                    borderRadius: BorderRadius.circular(10)),
+                                hintText: 'Search Medicines'),
                           ),
                         ),
+                        Spacer(),
                         IconButton(
                           onPressed: () {},
                           icon: Icon(
@@ -119,9 +187,8 @@ class OrderPageScreenView extends StatelessWidget {
                       height: 10,
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 10, bottom: 20),
                       child: Padding(
-                        padding: const EdgeInsets.all(5.0),
+                        padding: const EdgeInsets.all(10),
                         child: Column(
                           children: [
                             Row(
@@ -132,7 +199,7 @@ class OrderPageScreenView extends StatelessWidget {
                                   width: 85,
                                   decoration: BoxDecoration(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
+                                        BorderRadius.all(Radius.circular(10)),
                                     color: Colors.white,
                                   ),
                                   child: GestureDetector(
@@ -153,16 +220,14 @@ class OrderPageScreenView extends StatelessWidget {
                                   width: 85,
                                   decoration: BoxDecoration(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
+                                        BorderRadius.all(Radius.circular(10)),
                                     color: Colors.white,
                                   ),
                                   child: GestureDetector(
                                     onTap: () {},
                                     child: Padding(
                                       padding: const EdgeInsets.all(10.0),
-                                      child: Row(
-                                        children: [Text('07 items')],
-                                      ),
+                                      child: Center(child: Text('07 items')),
                                     ),
                                   ),
                                 ),
@@ -175,6 +240,14 @@ class OrderPageScreenView extends StatelessWidget {
                             _singlemeddetails(),
                             _singlemeddetails(),
                             _singlemeddetails(),
+                            _singlemeddetails(),
+                            _singlemeddetails(),
+                            _singlemeddetails(),
+                            _singlemeddetails(),
+                            _singlemeddetails(),
+                            _singlemeddetails(),
+                            _singlemeddetails(),
+                            _singlemeddetails(),
                           ],
                         ),
                       ),
@@ -182,60 +255,6 @@ class OrderPageScreenView extends StatelessWidget {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         color: Colors.grey[100],
                       ),
-                    ),
-                    SizedBox(
-                      height: 180,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: 40,
-                          width: 130,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5)),
-                              color: Colors.orange),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              'Total ₹ 460',
-                              style: TextStyle(
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.white),
-                            ),
-                          ),
-                        ),
-                        InnerShadow(
-                          blur: 5,
-                          color: Colors.black38,
-                          offset: const Offset(5, 5),
-                          child: Container(
-                            height: 40,
-                            width: 122,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                color: Colors.grey[200]),
-                            child: GestureDetector(
-                              onTap: () => model.pushPaymentModeView(),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      'Payment',
-                                      style: TextStyle(fontSize: 20),
-                                    ),
-                                    Icon(Icons.arrow_forward)
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ],
                 ),

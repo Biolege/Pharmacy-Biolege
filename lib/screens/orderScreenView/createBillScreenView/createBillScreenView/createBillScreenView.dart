@@ -12,7 +12,7 @@ class CreateBillScreenView extends StatelessWidget {
         return Scaffold(
             body: SafeArea(
                 child: Container(
-          margin: EdgeInsets.all(19),
+          margin: EdgeInsets.all(20),
           child: Column(
             children: [
               Row(
@@ -27,22 +27,8 @@ class CreateBillScreenView extends StatelessWidget {
                   ),
                 ],
               ),
-              // SizedBox(
-              //   height: 18,
-              // ),
-              // Row(
-              //   children: [
-              //     Text(
-              //       'Create billing',
-              //       style: TextStyle(
-              //           fontSize: 18,
-              //           color: Colors.black,
-              //           fontWeight: FontWeight.w600),
-              //     ),
-              //   ],
-              // ),
               SizedBox(
-                height: 35,
+                height: 50,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 25),

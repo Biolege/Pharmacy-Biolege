@@ -32,6 +32,7 @@ Padding customSuffixIcon(Icon icon) {
 
 RaisedButton buildOutlineButton(text, function) {
   return RaisedButton(
+    color: primaryColor,
     shape: new RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(40.0),
     ),
@@ -62,10 +63,11 @@ RaisedButton buildOutlineButton(text, function) {
   );
 }
 
-RaisedButton buildOutlineButtonCustomWidget(widget, function) {
+RaisedButton buildOutlineButtonCustomWidget(widget, function, double br) {
   return RaisedButton(
+    color: primaryColor,
     shape: new RoundedRectangleBorder(
-      borderRadius: new BorderRadius.circular(40.0),
+      borderRadius: new BorderRadius.circular(br),
     ),
     onPressed: function,
     child: Padding(
@@ -110,7 +112,7 @@ FlatButton
         Widget child, void Function() function, Color bgColor) {
   return FlatButton(
       height: 50,
-      minWidth: 200,
+      minWidth: 100,
       hoverColor: offWhite2,
       splashColor: bgColor,
       color: bgColor,

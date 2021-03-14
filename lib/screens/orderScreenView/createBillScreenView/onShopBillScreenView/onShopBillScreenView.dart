@@ -1,41 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:pharmacyapp/theme/reusables.dart';
 import 'package:stacked/stacked.dart';
-import '../../../../constants/innershadow.dart';
 import 'onShopBillScreenViewModel.dart';
 
-class OnShopBillScreenView extends StatelessWidget {
+class OnShopBillScreenView extends StatefulWidget {
   static const String routeName = "/OnShopBillScreenView";
+
+  @override
+  _OnShopBillScreenViewState createState() => _OnShopBillScreenViewState();
+}
+
+class _OnShopBillScreenViewState extends State<OnShopBillScreenView> {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<OnShopBillScreenViewModel>.reactive(
       viewModelBuilder: () => OnShopBillScreenViewModel(),
       builder: (context, model, child) {
         return Scaffold(
+          floatingActionButton: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              model.isValidPhoneNumber
+                  ? buildOutlineButton(
+                      "Continue", () => model.saveCustomerNumberAndNavigate())
+                  : buildOutlineButton("Continue", null)
+            ],
+          ),
           body: SafeArea(
               child: Container(
-            margin: EdgeInsets.all(19),
+            margin: const EdgeInsets.all(20),
             child: Column(
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      'On shop billing',
+                      'On Shop Billing',
                       style: TextStyle(
-                          fontSize: 21,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400),
+                        fontSize: 25,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Text(
+                      'Phone Number',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.black,
+                      ),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 25,
+                  height: 50,
                 ),
                 Row(
                   children: [
                     Text(
-                      'Enter customer mobile number',
+                      'Customer Number',
                       style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 18,
                           color: Colors.black,
                           fontWeight: FontWeight.w300),
                     )
@@ -45,60 +71,21 @@ class OnShopBillScreenView extends StatelessWidget {
                   height: 10,
                 ),
                 TextFormField(
-                  decoration: InputDecoration(hintText: 'mobile number'),
+                  autofocus: true,
+                  maxLength: 10,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  keyboardType: TextInputType.phone,
+                  maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                  validator: (x) => model.validatePhoneNumber(x),
+                  controller: model.phoneNumber,
+                  onChanged: (x) => model.enableContinue(x),
+                  decoration:
+                      InputDecoration(hintText: 'Enter customer mobile number'),
                 ),
+                Spacer(),
                 SizedBox(
-                  height: 447,
+                  height: 100,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.card_membership,
-                            size: 25, color: Colors.grey[400]),
-                        GestureDetector(
-                          child: Text(
-                            'Biolege card',
-                            style: TextStyle(
-                              fontSize: 25,
-                              color: Colors.grey,
-                            ),
-                          ),
-                          onTap: () => model.pushBiolegeCardScreenView(),
-                        ),
-                      ],
-                    ),
-                    InnerShadow(
-                      blur: 5,
-                      color: Colors.black38,
-                      offset: const Offset(5, 5),
-                      child: Container(
-                        height: 40,
-                        width: 90,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(20)),
-                          color: Colors.grey[200],
-                        ),
-                        child: GestureDetector(
-                          onTap: () => model.pushCustomerDetailsScreenView(),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Next',
-                                  style: TextStyle(fontSize: 23),
-                                ),
-                                Icon(Icons.arrow_forward)
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
               ],
             ),
           )),
