@@ -256,6 +256,9 @@ class OrderPageScreenView extends StatelessWidget {
                         color: Colors.grey[100],
                       ),
                     ),
+                    SizedBox(
+                      height: 100,
+                    ),
                   ],
                 ),
               ),
