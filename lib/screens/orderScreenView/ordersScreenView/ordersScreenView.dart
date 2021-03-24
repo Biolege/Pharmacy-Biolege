@@ -36,26 +36,26 @@ class _OrdersScreenViewState extends State<OrdersScreenView> {
       PersistentBottomNavBarItem(
         icon: Icon(Icons.blur_circular),
         title: 'Create billing',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.cloud_circle),
         title: 'Online Orders',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.add),
         title: 'Order progress',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.router),
         title: 'Report',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
     ];
   }
@@ -67,11 +67,12 @@ class _OrdersScreenViewState extends State<OrdersScreenView> {
       builder: (context, model, child) {
         return Scaffold(
           body: PersistentTabView(
-            iconSize: 35,
+            context,
+            // iconSize: 35,
             controller: _controller,
             screens: _buildScreens(),
             confineInSafeArea: true,
-            itemCount: 4,
+            // itemCount: 4,
             backgroundColor: Colors.white,
             handleAndroidBackButtonPress: true,
             stateManagement: true,

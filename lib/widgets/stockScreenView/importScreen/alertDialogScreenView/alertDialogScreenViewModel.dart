@@ -3,8 +3,7 @@ import 'package:stacked/stacked.dart';
 class AlertDialogModel extends FutureViewModel {
   @override
   Future futureToRun() async {
-    // TODO: implement futureToRun
-   try {} catch (e) {
+    try {} catch (e) {
       throw UnimplementedError();
     }
   }
@@ -13,7 +12,6 @@ class AlertDialogModel extends FutureViewModel {
 class AlertDialogModel1 extends FutureViewModel {
   @override
   Future futureToRun() async {
-    // TODO: implement futureToRun
     try {} catch (e) {
       throw UnimplementedError();
     }

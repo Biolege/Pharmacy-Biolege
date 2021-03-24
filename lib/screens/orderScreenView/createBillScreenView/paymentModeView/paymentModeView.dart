@@ -4,7 +4,6 @@ import 'package:pharmacyapp/app/mediaQ.dart';
 import 'package:pharmacyapp/theme/reusables.dart';
 import 'package:pharmacyapp/theme/theme.dart';
 import 'package:stacked/stacked.dart';
-import '../../../../constants/innershadow.dart';
 import 'paymentModeViewModel.dart';
 
 class PaymentModeView extends StatelessWidget {

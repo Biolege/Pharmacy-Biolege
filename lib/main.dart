@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'app/locator.dart';
-import 'widgets/sidebar/sideBarLayoutScreenView/sideBarLayoutScreenView.dart';
 import 'app/router.gr.dart' as router;
 import 'widgets/sidebar/sideBarScreenView/sidebarScreenView.dart';
 

@@ -14,7 +14,6 @@ class ShopScreenViewModel extends FutureViewModel {
 
   @override
   Future futureToRun() async {
-    // TODO: implement futureToRun
     try {} catch (e) {
       throw UnimplementedError();
     }

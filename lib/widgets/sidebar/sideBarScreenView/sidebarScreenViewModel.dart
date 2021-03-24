@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../sideBarLayoutScreenView/ordersSideBarScreenView/ordersSideBarScreenView.dart';
 import '../../../app/locator.dart';
@@ -42,7 +41,6 @@ class SidebarScreenViewModel extends FutureViewModel {
 
   @override
   Future futureToRun() async {
-    // TODO: implement futureToRun
     try {} catch (e) {
       throw UnimplementedError();
     }

@@ -17,7 +17,6 @@ class ImportMedicineScreenViewModel extends FutureViewModel {
       _navigatorService.navigateTo(Routes.importMedicine);
   @override
   Future futureToRun() async {
-    // TODO: implement futureToRun
     try {} catch (e) {
       throw UnimplementedError();
     }

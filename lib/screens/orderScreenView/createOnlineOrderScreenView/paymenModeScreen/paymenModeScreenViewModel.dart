@@ -14,7 +14,6 @@ class PaymenModeScreenViewModel extends FutureViewModel {
       _navigatorService.navigateTo(Routes.orderConfirmationView);
   @override
   Future futureToRun() async {
-    // TODO: implement futureToRun
     try {} catch (e) {
       throw UnimplementedError();
     }

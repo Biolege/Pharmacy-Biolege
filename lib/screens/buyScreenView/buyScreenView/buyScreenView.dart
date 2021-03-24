@@ -36,26 +36,26 @@ class _BuyScreenViewState extends State<BuyScreenView> {
       PersistentBottomNavBarItem(
         icon: Icon(Icons.menu),
         title: 'Shop',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.cloud_done),
         title: 'My orders',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.add),
         title: 'New arrival',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.shopping_cart),
         title: 'Cart',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
     ];
   }
@@ -67,11 +67,12 @@ class _BuyScreenViewState extends State<BuyScreenView> {
       builder: (context, model, child) {
         return Scaffold(
           body: PersistentTabView(
-            iconSize: 35,
+            context,
+            // iconSize: 35,
             controller: _controller,
             screens: _buildScreens(),
             confineInSafeArea: true,
-            itemCount: 4,
+            // itemCount: 4,
             backgroundColor: Colors.white,
             handleAndroidBackButtonPress: true,
             stateManagement: true,

@@ -36,26 +36,26 @@ class _StockLayoutScreenViewState extends State<StockLayoutScreenView> {
       PersistentBottomNavBarItem(
         icon: Icon(Icons.menu),
         title: 'Inventory',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.cloud_download),
         title: 'Import meds',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.add),
         title: 'Biolege meds',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.bug_report),
         title: 'Stock Report',
-        activeColor: Colors.orange,
-        inactiveColor: Colors.grey,
+        activeColorPrimary: Colors.orange,
+        inactiveColorPrimary: Colors.grey,
       ),
     ];
   }
@@ -67,11 +67,12 @@ class _StockLayoutScreenViewState extends State<StockLayoutScreenView> {
       builder: (context, model, child) {
         return Scaffold(
           body: PersistentTabView(
-            iconSize: 35,
+            context,
+            // iconSize: 35,
             controller: _controller,
             screens: _buildScreens(),
             confineInSafeArea: true,
-            itemCount: 4,
+            // itemCount: 4,
             backgroundColor: Colors.white,
             handleAndroidBackButtonPress: true,
             stateManagement: true,

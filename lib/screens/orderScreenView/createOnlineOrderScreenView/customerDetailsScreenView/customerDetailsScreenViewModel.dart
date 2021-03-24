@@ -14,7 +14,6 @@ class CustomerDetailsScreenViewModel extends FutureViewModel {
       _navigatorService.navigateTo(Routes.orderPageScreenView);
   @override
   Future futureToRun() async {
-    // TODO: implement futureToRun
     try {} catch (e) {
       throw UnimplementedError();
     }
