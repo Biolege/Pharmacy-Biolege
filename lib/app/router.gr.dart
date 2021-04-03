@@ -10,6 +10,16 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../screens/accountsScreenView/accountsScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/addressScreen/addressScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/createOrSearchPharmacyScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyDescriptionScreen/addPharmacyDescriptionScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyDetailsScreen/addPharmacyScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyOwnerDetailsScreens/enterOwnerDetailsView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/searchPharmacyScreen/searchPharmacyScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/emailScreen/emailScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/genderScreen/genderScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/nameScreen/nameScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/roleSelectScreen/roleSelectScreenView.dart';
 import '../screens/analyticsScreenView/analyticsScreenView.dart';
 import '../screens/buyScreenView/buyScreenView/buyScreenView.dart';
 import '../screens/buyScreenView/shopScreen/productDescriptionScreenView/productDescriptionScreenView.dart';
@@ -17,6 +27,7 @@ import '../screens/employeesScreenView/employeesScreenView.dart';
 import '../screens/homePageScreenView/homePageScreenView.dart';
 import '../screens/myProfileScreenView/myProfileScreenView.dart';
 import '../screens/notificationScreenView/notificationScreenView.dart';
+import '../screens/onBoardingScreen/onBoardingScreenView.dart';
 import '../screens/orderScreenView/createBillScreenView/biolegeCardScreenView/biolegeCardScreenView.dart';
 import '../screens/orderScreenView/createBillScreenView/confirmationScreenView/confirmationScreenView.dart';
 import '../screens/orderScreenView/createBillScreenView/customerDetailsScreenView/customerDetailsScreenView.dart';
@@ -28,12 +39,34 @@ import '../screens/orderScreenView/onlineOrderScreenView/checkItemsScreenView/ch
 import '../screens/orderScreenView/onlineOrderScreenView/onlineOrderDetailsScreenView/onlineOrderDetailsScreenView.dart';
 import '../screens/orderScreenView/onlineOrderScreenView/orderConfirmationDetailScreenView/orderConfirmationDetailScreenView.dart';
 import '../screens/orderScreenView/ordersScreenView/ordersScreenView.dart';
-import '../widgets/stockScreenView/importScreen/importMedicineScreenView/importMedicineScreenViewComponent.dart';
-import '../widgets/stockScreenView/importScreen/medicineDetailsScreenView/medicineDetailsScreenView.dart';
-import '../widgets/stockScreenView/importScreen/myimportsScreenView/myImportsScreenView.dart';
-import '../widgets/stockScreenView/stockLayoutScreenView/stockLayoutScreenView.dart';
+import '../screens/rootView.dart';
+import '../screens/signUpScreens/otpScreen/otpScreenView.dart';
+import '../screens/signUpScreens/phoneNumberScreen/phoneScreenView.dart';
+import '../screens/stockScreenView/importScreen/importMedicineScreenView/importMedicineScreenViewComponent.dart';
+import '../screens/stockScreenView/importScreen/medicineDetailsScreenView/medicineDetailsScreenView.dart';
+import '../screens/stockScreenView/importScreen/myimportsScreenView/myImportsScreenView.dart';
+import '../screens/stockScreenView/stockLayoutScreenView/stockLayoutScreenView.dart';
+import '../screens/welcomeScreen/welcomeScreenView.dart';
 
 class Routes {
+  static const String root = '/root';
+  static const String onBoardingScreen = '/onBoardingScreen';
+  static const String phoneScreenView = '/phoneScreenView';
+  static const String oTPScreenView = '/otpScreenView';
+  static const String nameScreenView = '/nameScreenView';
+  static const String genderScreenView = '/genderScreenView';
+  static const String emailScreenView = '/emailScreenView';
+  static const String addressScreenView = '/addressScreenView';
+  static const String roleSelectScreenView = '/roleSelectScreenView';
+  static const String createOrSearchPharmacyScreenView =
+      '/createOrSearchPharmacyScreenView';
+  static const String searchPharmacyScreenView = '/searchClinicScreenView';
+  static const String addPharmacyScreenView = '/addPharmacyScreenView';
+  static const String addPharmacyDescriptionScreenView =
+      '/addPharmacyDescriptionScreenView';
+  static const String addPharmacyOwnerDetailsScreenView =
+      '/addPharmacyOwnerDetailsScreenView';
+  static const String welcomeScreenView = '/welcomeScreenView';
   static const String homePageScreenView = '/HomePageScreenView';
   static const String ordersScreenView = '/OrdersScreenView';
   static const String stockLayoutScreenView = '/StockLayoutScreenView';
@@ -61,6 +94,21 @@ class Routes {
   static const String myImportsScreenView = '/MyImportsScreenView';
   static const String medicineDetails = '/MedicineDetails';
   static const all = <String>{
+    root,
+    onBoardingScreen,
+    phoneScreenView,
+    oTPScreenView,
+    nameScreenView,
+    genderScreenView,
+    emailScreenView,
+    addressScreenView,
+    roleSelectScreenView,
+    createOrSearchPharmacyScreenView,
+    searchPharmacyScreenView,
+    addPharmacyScreenView,
+    addPharmacyDescriptionScreenView,
+    addPharmacyOwnerDetailsScreenView,
+    welcomeScreenView,
     homePageScreenView,
     ordersScreenView,
     stockLayoutScreenView,
@@ -91,6 +139,24 @@ class Router extends RouterBase {
   @override
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
+    RouteDef(Routes.root, page: Root),
+    RouteDef(Routes.onBoardingScreen, page: OnBoardingScreen),
+    RouteDef(Routes.phoneScreenView, page: PhoneScreenView),
+    RouteDef(Routes.oTPScreenView, page: OTPScreenView),
+    RouteDef(Routes.nameScreenView, page: NameScreenView),
+    RouteDef(Routes.genderScreenView, page: GenderScreenView),
+    RouteDef(Routes.emailScreenView, page: EmailScreenView),
+    RouteDef(Routes.addressScreenView, page: AddressScreenView),
+    RouteDef(Routes.roleSelectScreenView, page: RoleSelectScreenView),
+    RouteDef(Routes.createOrSearchPharmacyScreenView,
+        page: CreateOrSearchPharmacyScreenView),
+    RouteDef(Routes.searchPharmacyScreenView, page: SearchPharmacyScreenView),
+    RouteDef(Routes.addPharmacyScreenView, page: AddPharmacyScreenView),
+    RouteDef(Routes.addPharmacyDescriptionScreenView,
+        page: AddPharmacyDescriptionScreenView),
+    RouteDef(Routes.addPharmacyOwnerDetailsScreenView,
+        page: AddPharmacyOwnerDetailsScreenView),
+    RouteDef(Routes.welcomeScreenView, page: WelcomeScreenView),
     RouteDef(Routes.homePageScreenView, page: HomePageScreenView),
     RouteDef(Routes.ordersScreenView, page: OrdersScreenView),
     RouteDef(Routes.stockLayoutScreenView, page: StockLayoutScreenView),
@@ -121,6 +187,96 @@ class Router extends RouterBase {
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, AutoRouteFactory>{
+    Root: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => Root(),
+        settings: data,
+      );
+    },
+    OnBoardingScreen: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => OnBoardingScreen(),
+        settings: data,
+      );
+    },
+    PhoneScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => PhoneScreenView(),
+        settings: data,
+      );
+    },
+    OTPScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => OTPScreenView(),
+        settings: data,
+      );
+    },
+    NameScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => NameScreenView(),
+        settings: data,
+      );
+    },
+    GenderScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => GenderScreenView(),
+        settings: data,
+      );
+    },
+    EmailScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => EmailScreenView(),
+        settings: data,
+      );
+    },
+    AddressScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => AddressScreenView(),
+        settings: data,
+      );
+    },
+    RoleSelectScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => RoleSelectScreenView(),
+        settings: data,
+      );
+    },
+    CreateOrSearchPharmacyScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => CreateOrSearchPharmacyScreenView(),
+        settings: data,
+      );
+    },
+    SearchPharmacyScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => SearchPharmacyScreenView(),
+        settings: data,
+      );
+    },
+    AddPharmacyScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => AddPharmacyScreenView(),
+        settings: data,
+      );
+    },
+    AddPharmacyDescriptionScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => AddPharmacyDescriptionScreenView(),
+        settings: data,
+      );
+    },
+    AddPharmacyOwnerDetailsScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => AddPharmacyOwnerDetailsScreenView(),
+        settings: data,
+      );
+    },
+    WelcomeScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => WelcomeScreenView(),
+        settings: data,
+      );
+    },
     HomePageScreenView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => HomePageScreenView(),

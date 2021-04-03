@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pharmacyapp/app/router.gr.dart';
-import '../../../widgets/sidebar/sideBarScreenView/sidebarScreenView.dart';
+import '../../../app/router.gr.dart';
+import '../sideBarScreenView/sidebarScreenView.dart';
 import 'package:stacked/stacked.dart';
 import '../../../app/locator.dart';
 // import '../../../app/router.gr.dart';

@@ -51,8 +51,8 @@ dependencies:
   sms_autofill: ^1.2.6
   rename: ^1.2.0
   image_picker: ^0.6.7+17
-  # location: ^3.0.0
-  # geolocator: ^6.1.13
+  location: ^3.0.0
+  geolocator: ^6.1.13
   url_launcher:
   objectid: ^1.1.1
   # Authentication and Database

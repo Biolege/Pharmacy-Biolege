@@ -4,21 +4,36 @@
 // flutter pub run build_runner build --delete-conflicting-outputs
 // _____________________________________________________________________________
 import 'package:auto_route/auto_route_annotations.dart';
-import 'package:pharmacyapp/screens/orderScreenView/createBillScreenView/biolegeCardScreenView/biolegeCardScreenView.dart';
-import 'package:pharmacyapp/screens/orderScreenView/createBillScreenView/confirmationScreenView/confirmationScreenView.dart';
-import 'package:pharmacyapp/screens/orderScreenView/createBillScreenView/customerDetailsScreenView/customerDetailsScreenView.dart';
-import 'package:pharmacyapp/screens/orderScreenView/createBillScreenView/paymentModeView/paymentModeView.dart';
-import 'package:pharmacyapp/screens/orderScreenView/createOnlineOrderScreenView/orderConfirmationView/orderConfirmationView.dart';
-import 'package:pharmacyapp/screens/orderScreenView/onlineOrderScreenView/checkItemsScreenView/checkItemsScreenView.dart';
-import 'package:pharmacyapp/screens/orderScreenView/onlineOrderScreenView/onlineOrderDetailsScreenView/onlineOrderDetailsScreenView.dart';
-import 'package:pharmacyapp/screens/orderScreenView/onlineOrderScreenView/orderConfirmationDetailScreenView/orderConfirmationDetailScreenView.dart';
-import 'package:pharmacyapp/widgets/stockScreenView/importScreen/importMedicineScreenView/importMedicineScreenViewComponent.dart';
-import 'package:pharmacyapp/widgets/stockScreenView/importScreen/medicineDetailsScreenView/medicineDetailsScreenView.dart';
-import 'package:pharmacyapp/widgets/stockScreenView/importScreen/myimportsScreenView/myImportsScreenView.dart';
+import '../screens/welcomeScreen/welcomeScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/addressScreen/addressScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/createOrSearchPharmacyScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyDescriptionScreen/addPharmacyDescriptionScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyDetailsScreen/addPharmacyScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyOwnerDetailsScreens/enterOwnerDetailsView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/searchPharmacyScreen/searchPharmacyScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/emailScreen/emailScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/genderScreen/genderScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/nameScreen/nameScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/roleSelectScreen/roleSelectScreenView.dart';
+import '../screens/onBoardingScreen/onBoardingScreenView.dart';
+import '../screens/orderScreenView/createBillScreenView/biolegeCardScreenView/biolegeCardScreenView.dart';
+import '../screens/orderScreenView/createBillScreenView/confirmationScreenView/confirmationScreenView.dart';
+import '../screens/orderScreenView/createBillScreenView/customerDetailsScreenView/customerDetailsScreenView.dart';
+import '../screens/orderScreenView/createBillScreenView/paymentModeView/paymentModeView.dart';
+import '../screens/orderScreenView/createOnlineOrderScreenView/orderConfirmationView/orderConfirmationView.dart';
+import '../screens/orderScreenView/onlineOrderScreenView/checkItemsScreenView/checkItemsScreenView.dart';
+import '../screens/orderScreenView/onlineOrderScreenView/onlineOrderDetailsScreenView/onlineOrderDetailsScreenView.dart';
+import '../screens/orderScreenView/onlineOrderScreenView/orderConfirmationDetailScreenView/orderConfirmationDetailScreenView.dart';
+import '../screens/rootView.dart';
+import '../screens/signUpScreens/otpScreen/otpScreenView.dart';
+import '../screens/signUpScreens/phoneNumberScreen/phoneScreenView.dart';
+import '../screens/stockScreenView/importScreen/importMedicineScreenView/importMedicineScreenViewComponent.dart';
+import '../screens/stockScreenView/importScreen/medicineDetailsScreenView/medicineDetailsScreenView.dart';
+import '../screens/stockScreenView/importScreen/myimportsScreenView/myImportsScreenView.dart';
 import '../screens/orderScreenView/createBillScreenView/orderPageScreenView/orderPageScreenView.dart';
 import '../screens/orderScreenView/createBillScreenView/onShopBillScreenView/onShopBillScreenView.dart';
 import '../screens/buyScreenView/shopScreen/productDescriptionScreenView/productDescriptionScreenView.dart';
-import '../widgets/stockScreenView/stockLayoutScreenView/stockLayoutScreenView.dart';
+import '../screens/stockScreenView/stockLayoutScreenView/stockLayoutScreenView.dart';
 import '../screens/accountsScreenView/accountsScreenView.dart';
 import '../screens/analyticsScreenView/analyticsScreenView.dart';
 import '../screens/buyScreenView/buyScreenView/buyScreenView.dart';
@@ -28,67 +43,75 @@ import '../screens/myProfileScreenView/myProfileScreenView.dart';
 import '../screens/notificationScreenView/notificationScreenView.dart';
 import '../screens/orderScreenView/ordersScreenView/ordersScreenView.dart';
 
-// enum NavigationEvents {
-//   HomePageClickedEvent,
-//   OrdersClickedEvent,
-//   StockClickedEvent,
-//   BuyClickedEvent,
-//   NotificationClickedEvent,
-//   AnalysisClickedEvent,
-//   EmployeeClickedEvent,
-//   AccountsClickedEvent,
-//   MyProfileClickedEvent
-// }
-
-// abstract class NavigationStates {}
-
-// class NavigationBloc extends Bloc<NavigationEvents, NavigationStates> {
-//   NavigationBloc(NavigationStates x) : super(x);
-
-//   @override
-//   Stream<NavigationStates> mapEventToState(NavigationEvents event) async* {
-//     switch (event) {
-//       case NavigationEvents.HomePageClickedEvent:
-//         yield HomePageScreenView();
-//         break;
-
-//       case NavigationEvents.OrdersClickedEvent:
-//         yield OrdersScreenView();
-//         break;
-
-//       case NavigationEvents.StockClickedEvent:
-//         yield StockLayoutScreenView();
-//         break;
-
-//       case NavigationEvents.NotificationClickedEvent:
-//         yield NotificationScreenView();
-//         break;
-
-//       case NavigationEvents.AnalysisClickedEvent:
-//         yield AnalyticsScreenView();
-//         break;
-
-//       case NavigationEvents.BuyClickedEvent:
-//         yield C();
-//         break;
-
-//       case NavigationEvents.EmployeeClickedEvent:
-//         yield EmployeesScreenView();
-//         break;
-
-//       case NavigationEvents.AccountsClickedEvent:
-//         yield AccountsScreenView();
-//         break;
-
-//       case NavigationEvents.MyProfileClickedEvent:
-//         yield MyProfileScreenView();
-//         break;
-//     }
-//   }
-// }
-
 @MaterialAutoRouter(routes: <AutoRoute>[
   // ___________________________________________________________________________
+  MaterialRoute(
+    path: Root.routeName,
+    page: Root,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: OnBoardingScreen.routeName,
+    page: OnBoardingScreen,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: PhoneScreenView.routeName,
+    page: PhoneScreenView,
+  ),
+  MaterialRoute(
+    path: OTPScreenView.routeName,
+    page: OTPScreenView,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: NameScreenView.routeName,
+    page: NameScreenView,
+  ),
+  MaterialRoute(
+    path: GenderScreenView.routeName,
+    page: GenderScreenView,
+  ),
+  MaterialRoute(
+    path: EmailScreenView.routeName,
+    page: EmailScreenView,
+  ),
+  MaterialRoute(
+    path: AddressScreenView.routeName,
+    page: AddressScreenView,
+  ),
+  MaterialRoute(
+    path: RoleSelectScreenView.routeName,
+    page: RoleSelectScreenView,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: CreateOrSearchPharmacyScreenView.routeName,
+    page: CreateOrSearchPharmacyScreenView,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: SearchPharmacyScreenView.routeName,
+    page: SearchPharmacyScreenView,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: AddPharmacyScreenView.routeName,
+    page: AddPharmacyScreenView,
+  ),
+  MaterialRoute(
+    path: AddPharmacyDescriptionScreenView.routeName,
+    page: AddPharmacyDescriptionScreenView,
+  ),
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: AddPharmacyOwnerDetailsScreenView.routeName,
+    page: AddPharmacyOwnerDetailsScreenView,
+  ),
+  MaterialRoute(
+    path: WelcomeScreenView.routeName,
+    page: WelcomeScreenView,
+  ),
   MaterialRoute(
     path: HomePageScreenView.routeName,
     page: HomePageScreenView,

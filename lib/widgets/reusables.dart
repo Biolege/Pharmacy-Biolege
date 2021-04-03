@@ -1,11 +1,10 @@
 import 'dart:ui';
-
 import '../theme/theme.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import '../app/mediaQ.dart';
 import 'package:flutter/material.dart';
 
-String logoPath = "asset/images/biolege.png";
+String logoPath = "asset/images/logo.png";
 
 InputDecoration buildInputDecoration(String text, Icon icon) {
   return InputDecoration(
@@ -30,14 +29,11 @@ Padding customSuffixIcon(Icon icon) {
   );
 }
 
-ElevatedButton buildOutlineButton(text, function) {
-  return ElevatedButton(
-    style: ButtonStyle(
-        shape: MaterialStateProperty.all<OutlinedBorder>(
-            new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(40.0),
-        )),
-        backgroundColor: MaterialStateProperty.all<Color>(primaryColor)),
+RaisedButton buildOutlineButton(text, function) {
+  return RaisedButton(
+    shape: new RoundedRectangleBorder(
+      borderRadius: new BorderRadius.circular(40.0),
+    ),
     onPressed: function,
     child: Padding(
       padding: EdgeInsets.all(getProportionateScreenHeight(15)),
@@ -65,14 +61,11 @@ ElevatedButton buildOutlineButton(text, function) {
   );
 }
 
-ElevatedButton buildOutlineButtonCustomWidget(widget, function, double br) {
-  return ElevatedButton(
-    style: ButtonStyle(
-        shape: MaterialStateProperty.all<OutlinedBorder>(
-            new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(br),
-        )),
-        backgroundColor: MaterialStateProperty.all<Color>(primaryColor)),
+RaisedButton buildOutlineButtonCustomWidget(widget, function) {
+  return RaisedButton(
+    shape: new RoundedRectangleBorder(
+      borderRadius: new BorderRadius.circular(40.0),
+    ),
     onPressed: function,
     child: Padding(
         padding: EdgeInsets.all(getProportionateScreenHeight(15)),
@@ -80,66 +73,58 @@ ElevatedButton buildOutlineButtonCustomWidget(widget, function, double br) {
   );
 }
 
-OutlinedButton buildBasicOutlineButton(Widget child, void Function() function) {
-  return OutlinedButton(
-      style: ButtonStyle(
-          shape: MaterialStateProperty.all<OutlinedBorder>(
-              new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(40.0),
-          )),
-          padding: MaterialStateProperty.all(EdgeInsets.symmetric(
-              vertical: getProportionateScreenHeight(10),
-              horizontal: getProportionateScreenWidth(15))),
-          backgroundColor: MaterialStateProperty.all<Color>(offWhite1),
-          overlayColor: MaterialStateProperty.all<Color>(offWhite2)),
+OutlineButton buildBasicOutlineButton(Widget child, void Function() function) {
+  return OutlineButton(
+      highlightedBorderColor: offWhite1,
+      hoverColor: offWhite2,
+      splashColor: offWhite1,
+      shape: new RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(40.0),
+      ),
+      padding: EdgeInsets.symmetric(
+          vertical: getProportionateScreenHeight(10),
+          horizontal: getProportionateScreenWidth(15)),
       onPressed: () => function(),
       child: child);
 }
 
-OutlinedButton buildBasicOutlineButtonWithLessPaddingAndRounderCorners(
+OutlineButton buildBasicOutlineButtonWithLessPaddingAndRounderCorners(
     Widget child, void Function() function) {
-  return OutlinedButton(
-      style: ButtonStyle(
-          shape: MaterialStateProperty.all<OutlinedBorder>(
-              new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
-          )),
-          padding: MaterialStateProperty.all(
-            EdgeInsets.symmetric(
-                vertical: getProportionateScreenHeight(10),
-                horizontal: getProportionateScreenWidth(5)),
-          ),
-          backgroundColor: MaterialStateProperty.all<Color>(offWhite1),
-          overlayColor: MaterialStateProperty.all<Color>(offWhite2)),
+  return OutlineButton(
+      highlightedBorderColor: offWhite1,
+      hoverColor: offWhite2,
+      splashColor: offWhite1,
+      shape: new RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(10.0),
+      ),
+      padding: EdgeInsets.symmetric(
+          vertical: getProportionateScreenHeight(10),
+          horizontal: getProportionateScreenWidth(5)),
       onPressed: () => function(),
       child: child);
 }
 
-TextButton
+FlatButton
     buildBasicOutlineButtonWithLessPaddingAndRounderCornersWithCustomBackground(
         Widget child, void Function() function, Color bgColor) {
-  return TextButton(
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<OutlinedBorder>(
-            new RoundedRectangleBorder(
-          borderRadius: new BorderRadius.circular(8.0),
-        )),
-        padding: MaterialStateProperty.all(
-          EdgeInsets.symmetric(
-              vertical: getProportionateScreenHeight(10),
-              horizontal: getProportionateScreenWidth(5)),
-        ),
-        minimumSize: MaterialStateProperty.all<Size>(Size(100.0, 50.0)),
-        backgroundColor: MaterialStateProperty.all<Color>(offWhite2),
-        overlayColor: MaterialStateProperty.all<Color>(bgColor),
-      ), // color: bgColor,
+  return FlatButton(
+      height: 50,
+      minWidth: 200,
+      hoverColor: offWhite2,
+      splashColor: bgColor,
+      color: bgColor,
+      shape: new RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(8.0),
+      ),
+      padding: EdgeInsets.symmetric(
+          vertical: getProportionateScreenHeight(10),
+          horizontal: getProportionateScreenWidth(5)),
       onPressed: () => function(),
       child: child);
 }
 
 AppBar buildAppBar(BuildContext context) {
   return AppBar(
-      elevation: 0,
       automaticallyImplyLeading: false,
       leading: Navigator.canPop(context)
           ? IconButton(
@@ -155,14 +140,12 @@ AppBar buildAppBar(BuildContext context) {
 
 AppBar buildAppBarWithLogo(BuildContext context) {
   return AppBar(
-      elevation: 0,
-      backgroundColor: sideBarBlueColor,
       automaticallyImplyLeading: false,
       leading: Navigator.canPop(context)
           ? IconButton(
               icon: Icon(
                 Icons.keyboard_arrow_left_rounded,
-                color: Colors.white,
+                color: Colors.black,
                 size: 47,
               ),
               onPressed: () => Navigator.of(context).pop(),
@@ -179,22 +162,21 @@ AppBar buildAppBarWithLogo(BuildContext context) {
       ]);
 }
 
-AppBar buildAppBarWithLogoAndText(BuildContext context, Widget widget) {
+AppBar buildAppBarWithLogoAndText(
+    BuildContext context, String text, Widget widget) {
   return AppBar(
-      elevation: 0,
-      backgroundColor: sideBarBlueColor,
       automaticallyImplyLeading: false,
       leading: Navigator.canPop(context)
           ? IconButton(
               icon: Icon(
                 Icons.keyboard_arrow_left_rounded,
-                color: Colors.white,
+                color: Colors.black,
                 size: 47,
               ),
               onPressed: () => Navigator.of(context).pop(),
             )
           : null,
-      centerTitle: false,
+      centerTitle: true,
       title: Padding(padding: const EdgeInsets.only(top: 8.0), child: widget),
       actions: [
         Padding(
