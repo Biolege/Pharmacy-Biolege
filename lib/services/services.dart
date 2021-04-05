@@ -1,6 +1,9 @@
 import 'package:injectable/injectable.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
+import 'auth_service.dart';
+import 'filePicker_service.dart';
+import 'local_storage.dart';
 import 'onShopBillingDataService.dart';
 
 abstract class ThirdPartyServicesModule {
@@ -11,7 +14,11 @@ abstract class ThirdPartyServicesModule {
   // ---------------------------------------------------
   OnShopBillingDataService get onShopBillingDataService;
   // ---------------------------------------------------
+  // Data stored in cache/local storage
+  StorageService get localStorageService;
+  // ---------------------------------------------------
   // Navigation Services
+  // ---------------------------------------------------
   NavigationService get navigationService;
   // ---------------------------------------------------
   // Theme Services
@@ -20,14 +27,14 @@ abstract class ThirdPartyServicesModule {
   // ---------------------------------------------------
   // Authentication Services
   // ---------------------------------------------------
-  // AuthenticationService get authenticationService;
+  AuthenticationService get authenticationService;
   // ---------------------------------------------------
   // Utility Services
   // ---------------------------------------------------
   DialogService get dialogService;
   SnackbarService get snackbarService;
   BottomSheetService get bottomSheetService;
-  // FilePickHelperService get filePickHelperService;
+  FilePickHelperService get filePickHelperService;
   // APIServices get aPIServices;
   // ---------------------------------------------------
   // __________________________________________________________________________

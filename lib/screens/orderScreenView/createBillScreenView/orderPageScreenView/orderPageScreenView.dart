@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:pharmacyapp/theme/theme.dart';
 import '../../../../app/mediaQ.dart';
-import '../../../../theme/reusables.dart';
+import '../../../../widgets/reusables.dart';
 import 'package:stacked/stacked.dart';
 import 'orderPageScreenViewModel.dart';
 
@@ -106,8 +106,7 @@ class OrderPageScreenView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  () => model.pushPaymentModeView(),
-                  40),
+                  () => model.pushPaymentModeView()),
             ),
           ),
           body: SingleChildScrollView(

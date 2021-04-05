@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharmacyapp/app/mediaQ.dart';
-import 'package:pharmacyapp/theme/reusables.dart';
+import 'package:pharmacyapp/widgets/reusables.dart';
 import 'package:pharmacyapp/theme/theme.dart';
 import 'package:stacked/stacked.dart';
 import 'customerDetailsScreenViewModel.dart';

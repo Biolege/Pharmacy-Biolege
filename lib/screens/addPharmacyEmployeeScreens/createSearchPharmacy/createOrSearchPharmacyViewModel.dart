@@ -18,7 +18,7 @@ class CreateOrSearchPharmacyViewModel extends BaseViewModel {
   // ___________________________________________________________________________
   // Helper Functions
 
-  void navigateToSeachClinicView() async {
+  void navigateToSeachPharmacyView() async {
     // _authenticationService.signOut();
     _navigatorService.navigateTo(Routes.searchPharmacyScreenView);
   }
@@ -29,7 +29,7 @@ class CreateOrSearchPharmacyViewModel extends BaseViewModel {
   }
   // ___________________________________________________________________________
 
-  void navigateToAddClinicView() {
+  void navigateToAddPharmacyView() {
     _navigatorService.navigateTo(Routes.addPharmacyScreenView);
   }
 }

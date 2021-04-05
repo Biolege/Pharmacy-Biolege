@@ -1,73 +1,74 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:stacked/stacked.dart';
-import 'package:flutter/gestures.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 import '../../../../main.dart';
 import '../../../../widgets/reusables.dart';
 import '../../../../app/mediaQ.dart';
 import '../../../../theme/theme.dart';
 import '../../../../widgets/animations.dart';
-import 'enterOwnerDetailsViewModel.dart';
+import 'addPharmacyScreenViewModel.dart';
 
-class AddPharmacyOwnerDetailsScreenView extends StatelessWidget {
-  static const routeName = "/addPharmacyOwnerDetailsScreenView";
+class AddPharmacyScreenView extends StatelessWidget {
+  static const routeName = "/addPharmacyScreenView";
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<AddPharmacyOwnerDetailsScreenViewModel>.reactive(
+    return ViewModelBuilder<AddPharmacyScreenViewModel>.reactive(
       builder: (context, model, child) {
         return Scaffold(
           appBar: buildAppBar(context),
           body: SafeArea(
               child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      FadeInLTR(
-                        0.3,
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset(
-                              mainLogo,
-                              height: getProportionateScreenHeight(25),
-                            ),
-                          ],
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+              child: Container(
+                height: SizeConfig.screenHeight * 0.8,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        FadeInLTR(
+                          0.3,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.asset(
+                                mainLogo,
+                                height: getProportionateScreenHeight(25),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: getProportionateScreenHeight(30),
-                  ),
-                  FadeInLTR(
-                    0.6,
-                    Text(
-                      "Clinic Owner",
-                      style: TextStyle(fontSize: 24),
+                      ],
                     ),
-                  ),
-                  SizedBox(
-                    height: getProportionateScreenHeight(30),
-                  ),
-                  Form(
-                      key: model.clinicOwnerDetailsFormKey,
+                    SizedBox(
+                      height: getProportionateScreenHeight(20),
+                    ),
+                    FadeInLTR(
+                      0.6,
+                      Text(
+                        "Create a new pharmacy",
+                        style: TextStyle(fontSize: 24),
+                      ),
+                    ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(20),
+                    ),
+                    Form(
+                      key: model.createPharmacyForm,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           FadeInLTR(
-                            0.6,
+                            0.9,
                             Text(
-                              "Clinic Owner Name",
+                              "Pharmacy Name",
                               style: TextStyle(fontSize: 18),
                             ),
                           ),
@@ -75,10 +76,10 @@ class AddPharmacyOwnerDetailsScreenView extends StatelessWidget {
                             height: getProportionateScreenHeight(5),
                           ),
                           FadeInLTR(
-                            0.6,
+                            0.9,
                             TextFormField(
                               validator: (value) =>
-                                  model.validateClinicOwnerName(value),
+                                  model.validatePharmacyName(value),
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               maxLength: 30,
@@ -86,21 +87,21 @@ class AddPharmacyOwnerDetailsScreenView extends StatelessWidget {
                                   MaxLengthEnforcement.enforced,
                               keyboardType: TextInputType.name,
                               decoration: buildInputDecoration(
-                                  "Name",
+                                  "Pharmacy Name",
                                   Icon(
                                     MaterialCommunityIcons.account,
                                     color: primaryColor,
                                   )),
-                              controller: model.clinicOwnerName,
+                              controller: model.pharmacyName,
                             ),
                           ),
                           SizedBox(
                             height: getProportionateScreenHeight(15),
                           ),
                           FadeInLTR(
-                            0.9,
+                            1.8,
                             Text(
-                              "Clinic Phone Number",
+                              "Pharmacy address proof  ( Trade License ) ",
                               style: TextStyle(fontSize: 18),
                             ),
                           ),
@@ -108,74 +109,7 @@ class AddPharmacyOwnerDetailsScreenView extends StatelessWidget {
                             height: getProportionateScreenHeight(5),
                           ),
                           FadeInLTR(
-                            0.9,
-                            TextFormField(
-                              validator: (value) =>
-                                  model.validateClinicOwnerPhoneNumber(value),
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              maxLength: 10,
-                              maxLengthEnforcement:
-                                  MaxLengthEnforcement.enforced,
-                              keyboardType: TextInputType.phone,
-                              decoration: buildInputDecoration(
-                                  "Phone Number",
-                                  Icon(
-                                    MaterialCommunityIcons.account,
-                                    color: primaryColor,
-                                  )),
-                              controller: model.clinicPhoneNumber,
-                            ),
-                          ),
-                          SizedBox(
-                            height: getProportionateScreenHeight(15),
-                          ),
-                          FadeInLTR(
-                            1.2,
-                            Text(
-                              "Clinic Owner ID proof",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ),
-                          SizedBox(
-                            height: getProportionateScreenHeight(10),
-                          ),
-                          FadeInLTR(
-                            1.2,
-                            Center(
-                              child: ToggleSwitch(
-                                  minWidth: SizeConfig.screenWidth / 3.5,
-                                  minHeight: getProportionateScreenHeight(40),
-                                  fontSize: 12,
-                                  initialLabelIndex: model.getOwnerProofType,
-                                  activeBgColor: offWhite,
-                                  activeFgColor: offWhite1,
-                                  inactiveBgColor: offWhite1,
-                                  inactiveFgColor: offBlack2,
-                                  activeBgColors: [
-                                    Colors.blueGrey,
-                                    Colors.blueGrey,
-                                    Colors.blueGrey
-                                  ],
-                                  labels: [
-                                    'PAN Card',
-                                    'Aadhar Card',
-                                    'Voter Card'
-                                  ],
-                                  onToggle: (index) => {
-                                        index == 0
-                                            ? model.setIdProofType(0)
-                                            : index == 1
-                                                ? model.setIdProofType(1)
-                                                : model.setIdProofType(2)
-                                      }),
-                            ),
-                          ),
-                          SizedBox(
-                            height: getProportionateScreenHeight(10),
-                          ),
-                          FadeInLTR(
-                            1.2,
+                            1.8,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -185,10 +119,10 @@ class AddPharmacyOwnerDetailsScreenView extends StatelessWidget {
                                       style: TextStyle(
                                           fontWeight: FontWeight.w300),
                                     ),
-                                    () => model.pickClinicOwnerIdProof()),
-                                model.getClinicOwnerIdProof != null
+                                    () => model.pickPharmacyAddressProof()),
+                                model.getPharmacyAddressProof != null
                                     ? Image.memory(
-                                        model.getClinicOwnerIdProof,
+                                        model.getPharmacyAddressProof,
                                         width: 50,
                                         height: 50,
                                       )
@@ -198,6 +132,38 @@ class AddPharmacyOwnerDetailsScreenView extends StatelessWidget {
                           ),
                           SizedBox(
                             height: getProportionateScreenHeight(15),
+                          ),
+                          FadeInLTR(
+                            2.1,
+                            Text(
+                              "Pharmacy Logo",
+                              style: TextStyle(fontSize: 18),
+                            ),
+                          ),
+                          SizedBox(
+                            height: getProportionateScreenHeight(5),
+                          ),
+                          FadeInLTR(
+                            2.1,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                buildBasicOutlineButton(
+                                    Text(
+                                      "Upload Photo",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                    () => model.pickPharmacyLogo()),
+                                model.getPharmacyLogo != null
+                                    ? Image.memory(
+                                        model.getPharmacyLogo,
+                                        width: 50,
+                                        height: 50,
+                                      )
+                                    : Text("No file selected")
+                              ],
+                            ),
                           ),
                           FadeInLTR(
                             1.5,
@@ -277,25 +243,24 @@ class AddPharmacyOwnerDetailsScreenView extends StatelessWidget {
                             ),
                           ),
                         ],
-                      )),
-                  SizedBox(
-                    height: getProportionateScreenHeight(30),
-                  ),
-                  FadeInLTR(
-                    1.8,
-                    buildOutlineButton(
-                      "Continue",
-                      model.saveClinicOwnerDetails,
+                      ),
                     ),
-                  )
-                ],
+                    SizedBox(
+                      height: getProportionateScreenHeight(40),
+                    ),
+                    FadeInLTR(
+                      2.1,
+                      buildOutlineButton("Continue", model.savePharmacyDetails),
+                    ),
+                  ],
+                ),
               ),
             ),
           )),
         );
       },
       onModelReady: (model) => model.getCurrentLocation(),
-      viewModelBuilder: () => AddPharmacyOwnerDetailsScreenViewModel(),
+      viewModelBuilder: () => AddPharmacyScreenViewModel(),
     );
   }
 }

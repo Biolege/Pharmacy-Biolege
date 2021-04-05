@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../theme/reusables.dart';
+import '../../../widgets/reusables.dart';
 import '../../../app/mediaQ.dart';
 import '../../../theme/theme.dart';
 import 'package:stacked/stacked.dart';

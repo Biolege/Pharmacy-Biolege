@@ -9,7 +9,7 @@ import '../../../../theme/theme.dart';
 import 'searchPharmacyScreenViewModel.dart';
 
 class SearchPharmacyScreenView extends StatelessWidget {
-  static const routeName = "/searchClinicScreenView";
+  static const routeName = "/searchPharmacyScreenView";
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SearchPharmacyViewModel>.reactive(
@@ -41,7 +41,7 @@ class SearchPharmacyScreenView extends StatelessWidget {
                           height: getProportionateScreenHeight(60),
                         ),
                         Text(
-                          "Search for Clinic",
+                          "Search for Pharmacy",
                           style: TextStyle(fontSize: 24),
                         ),
                         SizedBox(
@@ -52,30 +52,30 @@ class SearchPharmacyScreenView extends StatelessWidget {
                           maxLengthEnforcement: MaxLengthEnforcement.enforced,
                           keyboardType: TextInputType.text,
                           decoration: buildInputDecoration(
-                              "Search Clinic",
+                              "Search Pharmacy",
                               Icon(
                                 AntDesign.search1,
                                 color: primaryColor,
                               )),
                           controller: model.search,
-                          onChanged: (_) => model.searchClinic(),
+                          onChanged: (_) => model.searchPharmacy(),
                         ),
                         SizedBox(
                           height: getProportionateScreenHeight(10),
                         ),
-                        model.results.length != 0 &&
-                                model.search.text.length != 0
-                            ? ListView.builder(
-                                primary: false,
-                                itemCount: model.results.length,
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  return SearchCards(
-                                    data: model.results[index],
-                                    model: model,
-                                  );
-                                })
-                            : Text("Type in the searchbox."),
+                        // model.results.length != 0 &&
+                        //         model.search.text.length != 0
+                        //     ? ListView.builder(
+                        //         primary: false,
+                        //         itemCount: model.results.length,
+                        //         shrinkWrap: true,
+                        //         itemBuilder: (context, index) {
+                        //           return SearchCards(
+                        //             data: model.results[index],
+                        //             model: model,
+                        //           );
+                        //         })
+                        //     : Text("Type in the searchbox."),
                       ],
                     ),
                   ),
@@ -93,38 +93,38 @@ class SearchPharmacyScreenView extends StatelessWidget {
   }
 }
 
-class SearchCards extends StatelessWidget {
-  final Pharmacy data;
-  final SearchPharmacyViewModel model;
-  SearchCards({this.data, this.model});
+// class SearchCards extends StatelessWidget {
+//   final Pharmacy data;
+//   final SearchPharmacyViewModel model;
+//   SearchCards({this.data, this.model});
 
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListTile(
-            onTap: () => model.setClinicForEmployee(data),
-            leading: Container(
-              width: 50,
-              height: 50,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.asset("asset/images/2.png")),
-            ),
-            title: Text(
-              data.name,
-              style: TextStyle(fontSize: 18),
-            ),
-            subtitle: Text(
-              data.address.clinicAddress +
-                  ", " +
-                  data.address.city +
-                  ", " +
-                  data.address.state,
-              style: TextStyle(fontSize: 12, color: offBlack2),
-            ),
-          )),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return GestureDetector(
+//       child: Padding(
+//           padding: const EdgeInsets.all(8.0),
+//           child: ListTile(
+//             onTap: () => model.setPharmacyForEmployee(data),
+//             leading: Container(
+//               width: 50,
+//               height: 50,
+//               child: ClipRRect(
+//                   borderRadius: BorderRadius.circular(10),
+//                   child: Image.asset("asset/images/2.png")),
+//             ),
+//             title: Text(
+//               data.name,
+//               style: TextStyle(fontSize: 18),
+//             ),
+//             subtitle: Text(
+//               data.address.pharmacyAddress +
+//                   ", " +
+//                   data.address.city +
+//                   ", " +
+//                   data.address.state,
+//               style: TextStyle(fontSize: 12, color: offBlack2),
+//             ),
+//           )),
+//     );
+//   }
+// }

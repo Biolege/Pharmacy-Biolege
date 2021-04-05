@@ -7,13 +7,13 @@ import '../../../../widgets/reusables.dart';
 import '../../../../app/mediaQ.dart';
 import '../../../../theme/theme.dart';
 import '../../../../widgets/animations.dart';
-import 'addPharmacyDescriptionScreenViewModel.dart';
+import 'addPharmacyAddressScreenViewModel.dart';
 
-class AddPharmacyDescriptionScreenView extends StatelessWidget {
-  static const routeName = "/addPharmacyDescriptionScreenView";
+class AddPharmacyAddressScreenView extends StatelessWidget {
+  static const routeName = "/addPharmacyAddressScreenView";
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<AddPharmacyDescriptionScreenViewModel>.reactive(
+    return ViewModelBuilder<AddPharmacyAddressViewModel>.reactive(
       builder: (context, model, child) {
         return Scaffold(
           appBar: buildAppBar(context),
@@ -48,7 +48,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                   FadeInLTR(
                     0.6,
                     Text(
-                      "Clinic address",
+                      "Pharmacy address",
                       style: TextStyle(fontSize: 24),
                     ),
                   ),
@@ -56,7 +56,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                     height: getProportionateScreenHeight(20),
                   ),
                   Form(
-                      key: model.clinicDesciptionFormKey,
+                      key: model.pharmacyDesciptionFormKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -74,7 +74,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                             0.9,
                             TextFormField(
                               validator: (value) =>
-                                  model.validateClinicStateName(value),
+                                  model.validatePharmacyStateName(value),
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               maxLength: 30,
@@ -87,7 +87,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                                     MaterialCommunityIcons.account,
                                     color: primaryColor,
                                   )),
-                              controller: model.clinicStateName,
+                              controller: model.pharmacyStateName,
                             ),
                           ),
                           SizedBox(
@@ -107,7 +107,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                             1.2,
                             TextFormField(
                               validator: (value) =>
-                                  model.validateClinicCityName(value),
+                                  model.validatePharmacyCityName(value),
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               maxLength: 30,
@@ -120,7 +120,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                                     MaterialCommunityIcons.account,
                                     color: primaryColor,
                                   )),
-                              controller: model.clinicCityName,
+                              controller: model.pharmacyCityName,
                             ),
                           ),
                           SizedBox(
@@ -140,7 +140,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                             1.2,
                             TextFormField(
                               validator: (value) =>
-                                  model.validateClinicPincode(value),
+                                  model.validatePharmacyPincode(value),
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               maxLength: 6,
@@ -153,7 +153,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                                     MaterialCommunityIcons.map,
                                     color: primaryColor,
                                   )),
-                              controller: model.clinicPincode,
+                              controller: model.pharmacyPincode,
                             ),
                           ),
                           SizedBox(
@@ -162,7 +162,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                           FadeInLTR(
                             1.5,
                             Text(
-                              "Clinic Address",
+                              "Pharmacy Address",
                               style: TextStyle(fontSize: 18),
                             ),
                           ),
@@ -173,7 +173,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                             1.5,
                             TextFormField(
                               validator: (value) =>
-                                  model.validateClinicCityAddress(value),
+                                  model.validatePharmacyCityAddress(value),
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
                               maxLength: 50,
@@ -181,48 +181,16 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                                   MaxLengthEnforcement.enforced,
                               keyboardType: TextInputType.streetAddress,
                               decoration: buildInputDecoration(
-                                  "Clinic Address",
+                                  "Pharmacy Address",
                                   Icon(
                                     MaterialCommunityIcons.map,
                                     color: primaryColor,
                                   )),
-                              controller: model.clinicAddress,
+                              controller: model.pharmacyAddress,
                             ),
                           ),
                           SizedBox(
                             height: getProportionateScreenHeight(15),
-                          ),
-                          FadeInLTR(
-                            1.8,
-                            Text(
-                              "Clinic address proof  ( Trade License ) ",
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ),
-                          SizedBox(
-                            height: getProportionateScreenHeight(5),
-                          ),
-                          FadeInLTR(
-                            1.8,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                buildBasicOutlineButton(
-                                    Text(
-                                      "Upload Photo",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w300),
-                                    ),
-                                    () => model.pickClinicAddressProof()),
-                                model.getClinicAddressProof != null
-                                    ? Image.memory(
-                                        model.getClinicAddressProof,
-                                        width: 50,
-                                        height: 50,
-                                      )
-                                    : Text("No file selected")
-                              ],
-                            ),
                           ),
                         ],
                       )),
@@ -233,7 +201,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
                     1.8,
                     buildOutlineButton(
                       "Continue",
-                      model.saveClinicDescription,
+                      model.savePharmacyDescription,
                     ),
                   )
                 ],
@@ -242,7 +210,7 @@ class AddPharmacyDescriptionScreenView extends StatelessWidget {
           )),
         );
       },
-      viewModelBuilder: () => AddPharmacyDescriptionScreenViewModel(),
+      viewModelBuilder: () => AddPharmacyAddressViewModel(),
     );
   }
 }

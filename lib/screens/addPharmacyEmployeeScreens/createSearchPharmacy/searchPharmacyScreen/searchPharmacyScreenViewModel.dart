@@ -22,33 +22,33 @@ class SearchPharmacyViewModel extends FutureViewModel {
   // __________________________________________________________________________
   // Variables and Controller
   TextEditingController search = TextEditingController();
-  List<Pharmacy> allClinic;
+  List<Pharmacy> allPharmacy;
   List<Pharmacy> results = [];
 
-  void searchClinic() {
+  void searchPharmacy() {
     results.clear();
-    allClinic
-        .where((clinic) =>
-            clinic.name.toLowerCase().contains(search.text.toLowerCase()))
-        .forEach((clinic) => results.add(clinic));
+    allPharmacy
+        .where((pharmacy) =>
+            pharmacy.name.toLowerCase().contains(search.text.toLowerCase()))
+        .forEach((pharmacy) => results.add(pharmacy));
 
     if (search.text.length == 0) results.clear();
 
     notifyListeners();
   }
 
-  void setClinicForEmployee(Pharmacy clc) async {
+  void setPharmacyForEmployee(Pharmacy clc) async {
     DialogResponse response = await _dialogService.showConfirmationDialog(
         title: "Do you want to continue ?",
         description:
-            "This will add/update clinic to your profile and by clicking on continue, you are agreeing to our terms of use & privacy policy",
+            "This will add/update pharmacy to your profile and by clicking on continue, you are agreeing to our terms of use & privacy policy",
         cancelTitle: "Cancel",
         confirmationTitle: "Continue",
         dialogPlatform: DialogPlatform.Custom);
 
     if (response.confirmed) {
       setBusy(true);
-      // await _dataFromApiService.saveClinicForEmployeeINIT(clc.id);
+      // await _dataFromApiService.savePharmacyForEmployeeINIT(clc.id);
       setBusy(false);
       navigateToWelcomeScreen();
     }
@@ -65,7 +65,7 @@ class SearchPharmacyViewModel extends FutureViewModel {
   Future futureToRun() async {
     try {
       setBusy(true);
-      // allClinic = _dataFromApiService.getAllClinics;
+      // allPharmacy = _dataFromApiService.getAllPharmacys;
       setBusy(false);
     } catch (e) {
       _snackBarService.showSnackbar(message: e.toString());

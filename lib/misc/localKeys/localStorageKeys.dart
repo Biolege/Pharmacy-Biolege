@@ -32,8 +32,6 @@ String pharmacyIdLocalStorageKey = "PHARMACYID";
 
 String pharmacyNameLocalStorageKey = "PHARMACYNAME";
 
-String pharmacyAddressLocalStorageKey = "PHARMACYADDRESS";
-
 String pharmacyAddressProofLocalStorageKey = "PHARMACYADDRESSPROOF";
 
 String pharmacyLogoLocalStorageKey = "PHARMACYLOGO";
@@ -41,6 +39,15 @@ String pharmacyLogoLocalStorageKey = "PHARMACYLOGO";
 String pharmacyLocationLongitudeLocalStorageKey = "PHARMACYLOCATIONLONGITUDE";
 
 String pharmacyLocationLatitudeLocalStorageKey = "PHARMACYLOCATIONLATITUDE";
+// ...........................................................................
+//
+String pharmacyStateNameLocalStorageKey = "PHARMACYSTATENAME";
+
+String pharmacyCityNameLocalStorageKey = "PHARMACYCITYNAME";
+
+String pharmacyPinCodeLocalStorageKey = "PHARMACYPINCODE";
+
+String pharmacyAddressLocalStorageKey = "PHARMACYADDRESS";
 
 // ...........................................................................
 

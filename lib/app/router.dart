@@ -4,12 +4,13 @@
 // flutter pub run build_runner build --delete-conflicting-outputs
 // _____________________________________________________________________________
 import 'package:auto_route/auto_route_annotations.dart';
+
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/addPharmacyScreen/addPharmacyScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/addPharmacyAddressScreen/addPharmacyAddressScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/addPharmacyOwnerDetailsScreens/addPharmacyOwnerDetailsView.dart';
 import '../screens/welcomeScreen/welcomeScreenView.dart';
 import '../screens/addPharmacyEmployeeScreens/addressScreen/addressScreenView.dart';
 import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/createOrSearchPharmacyScreenView.dart';
-import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyDescriptionScreen/addPharmacyDescriptionScreenView.dart';
-import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyDetailsScreen/addPharmacyScreenView.dart';
-import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyOwnerDetailsScreens/enterOwnerDetailsView.dart';
 import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/searchPharmacyScreen/searchPharmacyScreenView.dart';
 import '../screens/addPharmacyEmployeeScreens/emailScreen/emailScreenView.dart';
 import '../screens/addPharmacyEmployeeScreens/genderScreen/genderScreenView.dart';
@@ -95,19 +96,24 @@ import '../screens/orderScreenView/ordersScreenView/ordersScreenView.dart';
     page: SearchPharmacyScreenView,
   ),
   // ___________________________________________________________________________
+  // =-o=-o
   MaterialRoute(
     path: AddPharmacyScreenView.routeName,
     page: AddPharmacyScreenView,
   ),
-  MaterialRoute(
-    path: AddPharmacyDescriptionScreenView.routeName,
-    page: AddPharmacyDescriptionScreenView,
-  ),
+  // =-o=-o
   // ___________________________________________________________________________
   MaterialRoute(
     path: AddPharmacyOwnerDetailsScreenView.routeName,
     page: AddPharmacyOwnerDetailsScreenView,
   ),
+
+  // ___________________________________________________________________________
+  MaterialRoute(
+    path: AddPharmacyAddressScreenView.routeName,
+    page: AddPharmacyAddressScreenView,
+  ),
+  // ___________________________________________________________________________
   MaterialRoute(
     path: WelcomeScreenView.routeName,
     page: WelcomeScreenView,

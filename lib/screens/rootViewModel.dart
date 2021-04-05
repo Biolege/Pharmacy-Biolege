@@ -32,9 +32,9 @@ class RootViewModel extends BaseViewModel {
     }
     _permissionGranted = await location.hasPermission();
 
-    if (_permissionGranted == PermissionStatus.denied) {
+    if (_permissionGranted == PermissionStatus.DENIED) {
       _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) return null;
+      if (_permissionGranted != PermissionStatus.GRANTED) return null;
     }
     notifyListeners();
   }

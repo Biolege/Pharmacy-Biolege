@@ -11,10 +11,10 @@ import 'package:flutter/material.dart';
 
 import '../screens/accountsScreenView/accountsScreenView.dart';
 import '../screens/addPharmacyEmployeeScreens/addressScreen/addressScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/addPharmacyAddressScreen/addPharmacyAddressScreenView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/addPharmacyOwnerDetailsScreens/addPharmacyOwnerDetailsView.dart';
+import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/addPharmacyScreen/addPharmacyScreenView.dart';
 import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/createOrSearchPharmacyScreenView.dart';
-import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyDescriptionScreen/addPharmacyDescriptionScreenView.dart';
-import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyDetailsScreen/addPharmacyScreenView.dart';
-import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/pharmacyOwnerDetailsScreens/enterOwnerDetailsView.dart';
 import '../screens/addPharmacyEmployeeScreens/createSearchPharmacy/searchPharmacyScreen/searchPharmacyScreenView.dart';
 import '../screens/addPharmacyEmployeeScreens/emailScreen/emailScreenView.dart';
 import '../screens/addPharmacyEmployeeScreens/genderScreen/genderScreenView.dart';
@@ -60,12 +60,12 @@ class Routes {
   static const String roleSelectScreenView = '/roleSelectScreenView';
   static const String createOrSearchPharmacyScreenView =
       '/createOrSearchPharmacyScreenView';
-  static const String searchPharmacyScreenView = '/searchClinicScreenView';
+  static const String searchPharmacyScreenView = '/searchPharmacyScreenView';
   static const String addPharmacyScreenView = '/addPharmacyScreenView';
-  static const String addPharmacyDescriptionScreenView =
-      '/addPharmacyDescriptionScreenView';
   static const String addPharmacyOwnerDetailsScreenView =
       '/addPharmacyOwnerDetailsScreenView';
+  static const String addPharmacyAddressScreenView =
+      '/addPharmacyAddressScreenView';
   static const String welcomeScreenView = '/welcomeScreenView';
   static const String homePageScreenView = '/HomePageScreenView';
   static const String ordersScreenView = '/OrdersScreenView';
@@ -106,8 +106,8 @@ class Routes {
     createOrSearchPharmacyScreenView,
     searchPharmacyScreenView,
     addPharmacyScreenView,
-    addPharmacyDescriptionScreenView,
     addPharmacyOwnerDetailsScreenView,
+    addPharmacyAddressScreenView,
     welcomeScreenView,
     homePageScreenView,
     ordersScreenView,
@@ -152,10 +152,10 @@ class Router extends RouterBase {
         page: CreateOrSearchPharmacyScreenView),
     RouteDef(Routes.searchPharmacyScreenView, page: SearchPharmacyScreenView),
     RouteDef(Routes.addPharmacyScreenView, page: AddPharmacyScreenView),
-    RouteDef(Routes.addPharmacyDescriptionScreenView,
-        page: AddPharmacyDescriptionScreenView),
     RouteDef(Routes.addPharmacyOwnerDetailsScreenView,
         page: AddPharmacyOwnerDetailsScreenView),
+    RouteDef(Routes.addPharmacyAddressScreenView,
+        page: AddPharmacyAddressScreenView),
     RouteDef(Routes.welcomeScreenView, page: WelcomeScreenView),
     RouteDef(Routes.homePageScreenView, page: HomePageScreenView),
     RouteDef(Routes.ordersScreenView, page: OrdersScreenView),
@@ -259,15 +259,15 @@ class Router extends RouterBase {
         settings: data,
       );
     },
-    AddPharmacyDescriptionScreenView: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => AddPharmacyDescriptionScreenView(),
-        settings: data,
-      );
-    },
     AddPharmacyOwnerDetailsScreenView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => AddPharmacyOwnerDetailsScreenView(),
+        settings: data,
+      );
+    },
+    AddPharmacyAddressScreenView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => AddPharmacyAddressScreenView(),
         settings: data,
       );
     },

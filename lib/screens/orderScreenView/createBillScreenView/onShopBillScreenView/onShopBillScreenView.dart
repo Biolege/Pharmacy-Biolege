@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pharmacyapp/theme/reusables.dart';
+import 'package:pharmacyapp/widgets/reusables.dart';
 import 'package:stacked/stacked.dart';
 import 'onShopBillScreenViewModel.dart';
 

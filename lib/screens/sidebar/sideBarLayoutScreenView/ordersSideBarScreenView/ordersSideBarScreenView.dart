@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../app/mediaQ.dart';
-import '../../../../theme/reusables.dart';
+import '../../../../widgets/reusables.dart';
 import '../../../../theme/theme.dart';
 import 'package:stacked/stacked.dart';
 import 'ordersSideBarScreenViewModel.dart';

@@ -72,7 +72,7 @@ class CreateOrSearchPharmacyScreenView extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    model.navigateToAddClinicView)
+                                    model.navigateToAddPharmacyView)
                                 : Container(),
                             SizedBox(
                               height: getProportionateScreenHeight(30),
@@ -92,7 +92,7 @@ class CreateOrSearchPharmacyScreenView extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                model.navigateToSeachClinicView),
+                                model.navigateToSeachPharmacyView),
                           ],
                         ),
                       ),

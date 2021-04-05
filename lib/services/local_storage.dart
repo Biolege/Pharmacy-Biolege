@@ -60,6 +60,15 @@ class StorageService {
   static String _pharmacyLogo;
   String get getPharmacyLogo => _pharmacyLogo;
   // ...........................................................................
+  static String _pharmacyStateName;
+  String get getPharmacyStateName => _pharmacyStateName;
+  // ------------------------------------------------------------
+  static String _pharmacyCityName;
+  String get getPharmacyCityName => _pharmacyCityName;
+  // ------------------------------------------------------------
+  static String _pharmacyPinCode;
+  String get getPharmacyPinCode => _pharmacyPinCode;
+  // ------------------------------------------------------------
   static String _pharmacyAddress;
   String get getPharmacyAddress => _pharmacyAddress;
   // ------------------------------------------------------------
@@ -122,8 +131,18 @@ class StorageService {
       // ------------------------------------------------------------------
       _pharmacyLogo = _localStorage.getString(pharmacyLogoLocalStorageKey);
       // .......................................................................
+      _pharmacyStateName =
+          _localStorage.getString(pharmacyStateNameLocalStorageKey);
+      // ------------------------------------------------------------------
+      _pharmacyCityName =
+          _localStorage.getString(pharmacyCityNameLocalStorageKey);
+      // ------------------------------------------------------------------
       _pharmacyAddress =
           _localStorage.getString(pharmacyAddressLocalStorageKey);
+      // ------------------------------------------------------------------
+      _pharmacyPinCode =
+          _localStorage.getString(pharmacyPinCodeLocalStorageKey);
+      // ------------------------------------------------------------------
       // ------------------------------------------------------------------
       _pharmacyAddressProof =
           _localStorage.getString(pharmacyAddressProofLocalStorageKey);
@@ -217,7 +236,6 @@ class StorageService {
 // ...........................................................................
   Future setPharmacyDetails({
     String pharmacyName,
-    String pharmacyAddress,
     Uint8List pharmacyAddressProof,
     Uint8List pharmacyLogo,
     double pharmacyLocationLongitude,
@@ -236,8 +254,6 @@ class StorageService {
 
     await _localStorage.setString(pharmacyNameLocalStorageKey, _pharmacyName);
     await _localStorage.setString(
-        pharmacyAddressLocalStorageKey, pharmacyAddress);
-    await _localStorage.setString(
         pharmacyAddressProofLocalStorageKey, _pharmacyAddressProof);
 
     await _localStorage.setString(pharmacyLogoLocalStorageKey, _pharmacyLogo);
@@ -245,6 +261,30 @@ class StorageService {
         pharmacyLocationLongitudeLocalStorageKey, _pharmacyLocationLongitude);
     await _localStorage.setDouble(
         pharmacyLocationLatitudeLocalStorageKey, _pharmacyLocationLatitude);
+  }
+
+// ...........................................................................
+  Future setPharmacyAddress({
+    String pharmacyStateName,
+    String pharmacyCityName,
+    String pharmacyAddress,
+    String pharmacyPinCode,
+  }) async {
+    SharedPreferences _localStorage = await SharedPreferences.getInstance();
+
+    _pharmacyStateName = pharmacyStateName;
+    _pharmacyCityName = pharmacyCityName;
+    _pharmacyAddress = pharmacyAddress;
+    _pharmacyPinCode = pharmacyPinCode;
+
+    await _localStorage.setString(
+        pharmacyStateNameLocalStorageKey, _pharmacyStateName);
+    await _localStorage.setString(
+        pharmacyCityNameLocalStorageKey, _pharmacyCityName);
+    await _localStorage.setString(
+        pharmacyAddressLocalStorageKey, _pharmacyAddress);
+    await _localStorage.setString(
+        pharmacyPinCodeLocalStorageKey, _pharmacyPinCode);
   }
 
 // ...........................................................................
@@ -392,6 +432,18 @@ class StorageService {
     return _localStorage.getString(pharmacyAddressLocalStorageKey);
   }
 
+// .............................................................................
+  Future<String> getPharmacyStateNameFromLocal() async {
+    SharedPreferences _localStorage = await SharedPreferences.getInstance();
+    return _localStorage.getString(pharmacyStateNameLocalStorageKey);
+  }
+
+// ---------------------------------------------------------------
+  Future<String> getPharmacyCityNameFromLocal() async {
+    SharedPreferences _localStorage = await SharedPreferences.getInstance();
+    return _localStorage.getString(pharmacyCityNameLocalStorageKey);
+  }
+
 // ---------------------------------------------------------------
   Future<String> getPharmacyPinCodeFromLocal() async {
     SharedPreferences _localStorage = await SharedPreferences.getInstance();
@@ -496,29 +548,31 @@ class StorageService {
       pharmacyPhoneNumberLocalStorageKey:
           _localStorage.getInt(pharmacyPhoneNumberLocalStorageKey),
       // ------------------------------------------------------------------
-
       pharmacyLogoLocalStorageKey: _filePickHelperService.dataFromBase64String(
           _localStorage.getString(pharmacyLogoLocalStorageKey)),
-
+      // .......................................................................
+      pharmacyStateNameLocalStorageKey:
+          _localStorage.getString(pharmacyStateNameLocalStorageKey),
       // ------------------------------------------------------------------
-
+      pharmacyCityNameLocalStorageKey:
+          _localStorage.getString(pharmacyCityNameLocalStorageKey),
+      // ------------------------------------------------------------------
+      pharmacyPinCodeLocalStorageKey:
+          _localStorage.getString(pharmacyPinCodeLocalStorageKey),
+      // ------------------------------------------------------------------
       pharmacyAddressLocalStorageKey:
           _localStorage.getString(pharmacyAddressLocalStorageKey),
       // ------------------------------------------------------------------
-
       pharmacyAddressProofLocalStorageKey:
           _filePickHelperService.dataFromBase64String(
               _localStorage.getString(pharmacyAddressProofLocalStorageKey)),
       // .......................................................................
       pharmacyOwnerNameLocalStorageKey:
           _localStorage.getString(pharmacyOwnerNameLocalStorageKey),
-
       // ------------------------------------------------------------------
       pharmacyOwnerPhoneLocalStorageKey:
           _localStorage.getString(pharmacyOwnerPhoneLocalStorageKey),
-
       // ------------------------------------------------------------------
-
       pharmacyOwnerIdProofLocalStorageKey:
           _filePickHelperService.dataFromBase64String(
               _localStorage.getString(pharmacyOwnerIdProofLocalStorageKey)),
@@ -569,6 +623,12 @@ class StorageService {
     _pharmacyAddress = null;
     // ------------------------------------------------------------------
     _pharmacyAddressProof = null;
+    // .........................................................................
+    _pharmacyStateName = null;
+    // ------------------------------------------------------------------
+    _pharmacyCityName = null;
+    // ------------------------------------------------------------------
+    _pharmacyPinCode = null;
     // .........................................................................
     _pharmacyOwnerName = null;
     // ------------------------------------------------------------------
